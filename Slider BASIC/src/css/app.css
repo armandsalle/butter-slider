@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: rgb(241, 241, 241);
+    color: rgb(37, 36, 34);
+    font-family: sans-serif;
+    cursor: none;
+}
+
+.cursor {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    background: rgb(184, 184, 184);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    transition: background .2s ease-in, width .2s ease-in, height .2s ease-in;
+    will-change: background, width, height;
+}
+
+.cursor.hover {
+    width: 72px;
+    height: 72px;
+}
+
+.cursor.active {
+    background: rgb(73, 73, 73);
+}
+
+.app {
+    position: relative;
+    width: 90%;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.slider {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    /* -ms-overflow-style: none; */
+}
+
+.slider.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+
+.slide {
+    flex-shrink: 0;
+    width: 300px;
+    display: inline-block;
+    margin-right: 10vw;
+    user-select: none;
+}
+
+.slide .logo {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(160, 160, 160);
+    margin-bottom: 30px;
+}
+
+.slide .divider {
+    width: 40px;
+    height: 3px;
+    background-color: rgb(37, 36, 34);
+    margin-bottom: 60px;
+}
+
+.slide .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.slider .content {
+    font-size: 18px;
+    line-height: 1.4;
+    padding-right: 10px;
+}
+
+.progress {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: rgb(160, 160, 160);
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    transform: translateX(-50%);
+}
+
+.bar {
+    position: absolute;
+    height: 2px;
+    width: 0%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(37, 36, 34);
+}
