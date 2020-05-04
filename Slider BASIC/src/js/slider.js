@@ -1,13 +1,11 @@
 import { roundToTwo, map } from "./utils";
 
-const cursor = document.querySelector(".cursor");
-
 /**
  *
  * @param {string} target CSS selector of the slider
  * @param {function} callback return a value between 0 and 100 (scroll amount)
  */
-const createSLider = (target, callback) => {
+const createSLider = (target, options) => {
   const slider = document.querySelector(target);
   let down = false;
   let startX = 0;
@@ -17,8 +15,6 @@ const createSLider = (target, callback) => {
   let dist = 0;
   let scrollPercent = (slider.scrollLeft * 100) / slider.offsetWidth;
   let scrollAmount = 0;
-  // let prevBar = 0;
-  // let prevScroll = 0;
 
   if (slider === null) {
     console.error("Target element does not exist on the page. ", target);
@@ -36,27 +32,36 @@ const createSLider = (target, callback) => {
     scrollLeft = slider.scrollLeft;
 
     slider.classList.add("active");
-    cursor.classList.add("active");
+    if (options?.mouseDown && typeof options?.mouseDown === "function") {
+      options.mouseDown();
+    }
   });
 
   slider.addEventListener("mouseleave", (e) => {
     down = false;
 
     slider.classList.remove("active");
-    cursor.classList.remove("hover");
-    cursor.classList.remove("active");
+
+    if (options?.mouseLeave && typeof options?.mouseLeave === "function") {
+      options.mouseLeave();
+    }
   });
 
   slider.addEventListener("mouseup", (e) => {
     down = false;
 
     slider.classList.remove("active");
-    cursor.classList.remove("active");
+    if (options?.mouseUp && typeof options?.mouseUp === "function") {
+      options.mouseUp();
+    }
   });
 
   slider.addEventListener("mousemove", (e) => {
     e.preventDefault();
-    cursor.classList.add("hover");
+
+    if (options?.mouseEnter && typeof options?.mouseEnter === "function") {
+      options.mouseEnter();
+    }
 
     if (!down) return;
 
@@ -70,7 +75,7 @@ const createSLider = (target, callback) => {
     // LERP functions
     scrollAmount += (dist - scrollAmount) * 0.03;
 
-    slider.scrollLeft = Math.max(0, scrollAmount);
+    slider.scrollLeft = scrollAmount;
 
     scrollPercent = map(
       slider.scrollLeft,
@@ -80,17 +85,10 @@ const createSLider = (target, callback) => {
       100
     );
 
-    callback(roundToTwo(scrollPercent));
+    if (options?.callback && typeof options?.callback === "function") {
+      options.callback(roundToTwo(scrollPercent));
+    }
 
-    // if (scrollAmount === prevScroll && scrollPercent === prevBar) {
-    //   isAnimating = false;
-    //   prevBar = 1;
-    //   prevScroll = 1;
-    //   cancelAnimationFrame(anime);
-    // } else {
-    // prevBar = scrollPercent;
-    // prevScroll = scrollAmount;
-    // }
     requestAnimationFrame(anime);
   };
 
