@@ -1,6 +1,7 @@
 # Simple Draggable Slider
 
 Here is a demo
+
 ![Demo gif](./demo.gif)
 
 ## Installation
