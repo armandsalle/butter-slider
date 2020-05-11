@@ -3,7 +3,7 @@ import { roundToTwo, map } from "./utils";
 /**
  *
  * @param {string} target CSS selector of the slider
- * @param {function} callback return a value between 0 and 100 (scroll amount)
+ * @param {object} options callback options
  */
 const createSLider = (target, options) => {
   const slider = document.querySelector(target);
@@ -72,8 +72,16 @@ const createSLider = (target, options) => {
   const anime = () => {
     isAnimating = true;
 
+    // Can't go over the slider
+    if (dist + scrollAmount <= 0) {
+      dist = 0;
+    }
+    if (dist >= slider.scrollWidth - slider.offsetWidth) {
+      dist = slider.scrollWidth - slider.offsetWidth;
+    }
+
     // LERP functions
-    scrollAmount += (dist - scrollAmount) * 0.03;
+    scrollAmount += (dist - scrollAmount) * 0.06;
 
     slider.scrollLeft = scrollAmount;
 

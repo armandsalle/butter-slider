@@ -19,7 +19,7 @@ Import `createSlider` function in your app and create a new slider.
 ```javascript
 createSlider(".slider", {
   mouseEnter: () => {
-   // When the cursor enter the slider
+    // When the cursor enter the slider
   },
   mouseLeave: () => {
     // When the cursor leave the slider
@@ -38,5 +38,11 @@ createSlider(".slider", {
 ```
 
 PR are most welcome! Feel free to improve it.
+
+## Next
+
+- [ ] Destroy slider
+- [ ] Optimisation
+- [ ] Make it more smooth
 
 Inspired by [Basic Agency website](https://basicagency.com/).

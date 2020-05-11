@@ -48,7 +48,7 @@ body {
 
 .app {
     position: relative;
-    width: 90%;
+    width: 100%;
     padding: 50px 0;
     display: flex;
     justify-content: center;
@@ -60,7 +60,8 @@ body {
     display: inline-flex;
     flex-wrap: nowrap;
     overflow-y: hidden;
-    /* -ms-overflow-style: none; */
+    width: 100%;
+    list-style: decimal;
 }
 
 .slider.no-scrollbar::-webkit-scrollbar {
@@ -71,9 +72,17 @@ body {
 .slide {
     flex-shrink: 0;
     width: 300px;
-    display: inline-block;
     margin-right: 10vw;
     user-select: none;
+}
+
+.slide:first-of-type {
+    margin-left: 5%;
+}
+
+.slide:last-of-type {
+    width: calc(300px + 5%);
+    padding-right: 5%;
 }
 
 .slide .logo {
@@ -104,7 +113,7 @@ body {
 .progress {
     position: absolute;
     height: 2px;
-    width: 100%;
+    width: 90%;
     background-color: rgb(160, 160, 160);
     bottom: 0;
     left: 50%;
