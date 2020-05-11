@@ -1,8 +1,6 @@
 # Simple Draggable Slider
 
-Here is a demo
-
-![Demo gif](./demo.gif)
+The slider is live [here](https://slider-drag.netlify.app/)
 
 ## Installation
 
