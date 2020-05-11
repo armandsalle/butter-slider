@@ -1,0 +1,24 @@
+{
+  "name": "slider",
+  "version": "1.0.0",
+  "description": "Simple draggable slider",
+  "main": "index.js",
+  "dependencies": {
+    "parcel": "^1.12.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armandsalle/Slider.git"
+  },
+  "author": "Armand Sallé",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/armandsalle/Slider/issues"
+  },
+  "homepage": "https://github.com/armandsalle/Slider#readme"
+}
