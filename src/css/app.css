@@ -131,3 +131,9 @@ body {
     right: 0;
     background-color: rgb(37, 36, 34);
 }
+
+@media (hover: none) {
+    .cursor {
+        display: none;
+    }
+}
