@@ -10,7 +10,7 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -21,6 +21,7 @@ body {
     color: rgb(37, 36, 34);
     font-family: sans-serif;
     cursor: none;
+    overflow-x: hidden;
 }
 
 .cursor {
@@ -56,16 +57,16 @@ body {
     width: 100%;
     padding: 50px 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
 }
 
 .cta {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
+    width: 100%;
+    margin: 60px 0 40px 0;
+    text-align: center;
 }
 
 button {
@@ -89,30 +90,26 @@ button:hover {
 .slider {
     display: inline-flex;
     flex-wrap: nowrap;
-    overflow-y: hidden;
+    overflow-x: hidden;
     width: 100%;
-    list-style: decimal;
+    list-style: none;
 }
-
-.slider.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
 
 .slide {
     flex-shrink: 0;
     width: 300px;
     margin-right: 10vw;
     user-select: none;
+    padding-bottom: 35px;
 }
 
 .slide:first-of-type {
-    margin-left: 5%;
+    margin-left: 10vw;
 }
 
 .slide:last-of-type {
-    width: calc(300px + 5%);
-    padding-right: 5%;
+    width: calc(300px + 10%);
+    padding-right: 10%;
 }
 
 .slide .logo {
@@ -162,8 +159,26 @@ button:hover {
     background-color: rgb(37, 36, 34);
 }
 
-@media (hover: none) {
+@media (any-hover: hover) {
+    .slider::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (any-hover: none) {
+    body {
+        background-color: white;
+    }
+
     .cursor {
         display: none;
+    }
+
+    .progress {
+        display: none;
+    }
+
+    .slider {
+        overflow-x: scroll;
     }
 }
