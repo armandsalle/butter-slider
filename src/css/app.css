@@ -46,6 +46,11 @@ body {
     background: rgb(73, 73, 73);
 }
 
+.cursor.btn-hover {
+    width: 0px;
+    height: 0px;
+}
+
 .app {
     position: relative;
     width: 100%;
@@ -54,6 +59,31 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+}
+
+.cta {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
+
+button {
+    border: none;
+    border-radius: 1px;
+    background-color: rgb(160, 160, 160);
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    transition: background-color .2s ease-in-out;
+    cursor: none;
+    user-select: none;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: rgb(129, 129, 129);
 }
 
 .slider {

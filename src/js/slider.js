@@ -15,13 +15,14 @@ const createSLider = (target, options) => {
   let dist = 0;
   let scrollPercent = (slider.scrollLeft * 100) / slider.offsetWidth;
   let scrollAmount = 0;
+  let stopAnimation = false;
 
   if (slider === null) {
     console.error("Target element does not exist on the page. ", target);
     return;
   }
 
-  slider.addEventListener("mousedown", (e) => {
+  const mousedown = (e) => {
     if (!isAnimating) {
       anime();
     }
@@ -35,9 +36,9 @@ const createSLider = (target, options) => {
     if (options?.mouseDown && typeof options?.mouseDown === "function") {
       options.mouseDown();
     }
-  });
+  };
 
-  slider.addEventListener("mouseleave", (e) => {
+  const mouseleave = (e) => {
     down = false;
 
     slider.classList.remove("active");
@@ -45,18 +46,18 @@ const createSLider = (target, options) => {
     if (options?.mouseLeave && typeof options?.mouseLeave === "function") {
       options.mouseLeave();
     }
-  });
+  };
 
-  slider.addEventListener("mouseup", (e) => {
+  const mouseup = (e) => {
     down = false;
 
     slider.classList.remove("active");
     if (options?.mouseUp && typeof options?.mouseUp === "function") {
       options.mouseUp();
     }
-  });
+  };
 
-  slider.addEventListener("mousemove", (e) => {
+  const mousemove = (e) => {
     e.preventDefault();
 
     if (options?.mouseEnter && typeof options?.mouseEnter === "function") {
@@ -67,7 +68,7 @@ const createSLider = (target, options) => {
 
     x = e.pageX - slider.offsetLeft;
     dist = scrollLeft - (x - startX) * 3;
-  });
+  };
 
   const anime = () => {
     isAnimating = true;
@@ -97,10 +98,42 @@ const createSLider = (target, options) => {
       options.callback(roundToTwo(scrollPercent));
     }
 
-    requestAnimationFrame(anime);
+    if (!stopAnimation) {
+      requestAnimationFrame(anime);
+    } else {
+      cancelAnimationFrame(anime);
+    }
   };
 
-  return null;
+  const init = () => {
+    down = false;
+    startX = 0;
+    scrollLeft = 0;
+    isAnimating = false;
+    x = 0;
+    dist = 0;
+    scrollPercent = (slider.scrollLeft * 100) / slider.offsetWidth;
+    scrollAmount = 0;
+    stopAnimation = false;
+
+    slider.addEventListener("mousedown", mousedown);
+    slider.addEventListener("mouseleave", mouseleave);
+    slider.addEventListener("mouseup", mouseup);
+    slider.addEventListener("mousemove", mousemove);
+  };
+
+  const destroy = () => {
+    stopAnimation = true;
+    slider.removeEventListener("mousedown", mousedown);
+    slider.removeEventListener("mouseleave", mouseleave);
+    slider.removeEventListener("mouseup", mouseup);
+    slider.removeEventListener("mousemove", mousemove);
+  };
+
+  return {
+    init,
+    destroy,
+  };
 };
 
 export default createSLider;
