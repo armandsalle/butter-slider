@@ -9,6 +9,10 @@
     box-sizing: border-box;
 }
 
+a {
+    color: currentColor;
+}
+
 body {
     min-height: 100vh;
     width: 100vw;
