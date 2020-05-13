@@ -28,7 +28,14 @@ const mySlider = createSlider(".slider", {
   },
 });
 
-mySlider.init();
+// Init if it's not a touch screen
+if (
+  !("ontouchstart" in window) ||
+  navigator.MaxTouchPoints > 0 ||
+  navigator.msMaxTouchPoints > 0
+) {
+  mySlider.init();
+}
 
 buttons.forEach((e) => {
   e.addEventListener("mousemove", () => {
