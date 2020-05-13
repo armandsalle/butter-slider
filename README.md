@@ -39,7 +39,11 @@ PR are most welcome! Feel free to improve it.
 
 ## Next
 
-- [ ] Destroy slider
+- [x] Destroy slider
+- [ ] Touch event listener
+- [ ] Add an intersection observer to destroy the slider
+- [ ] Destroy and init keep positions of previous slide poisiton
+- [ ] Add data attributes to control options (with Webflow)
 - [ ] Optimisation
 - [ ] Make it more smooth
 
