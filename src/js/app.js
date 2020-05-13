@@ -7,8 +7,6 @@ const destroyBtn = document.querySelector(".js-destroy");
 const initBtn = document.querySelector(".js-init");
 const buttons = [...document.querySelectorAll("button")];
 
-initCursor();
-
 const mySlider = createSlider(".slider", {
   mouseEnter: () => {
     cursor.classList.add("hover");
@@ -35,6 +33,7 @@ if (
   navigator.msMaxTouchPoints > 0
 ) {
   mySlider.init();
+  initCursor();
 }
 
 buttons.forEach((e) => {
