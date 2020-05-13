@@ -34,24 +34,24 @@ if (
 ) {
   mySlider.init();
   initCursor();
+
+  buttons.forEach((e) => {
+    e.addEventListener("mousemove", () => {
+      cursor.classList.add("btn-hover");
+    });
+
+    e.addEventListener("mouseleave", () => {
+      cursor.classList.remove("btn-hover");
+    });
+  });
+
+  destroyBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    mySlider.destroy();
+  });
+
+  initBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    mySlider.init();
+  });
 }
-
-buttons.forEach((e) => {
-  e.addEventListener("mousemove", () => {
-    cursor.classList.add("btn-hover");
-  });
-
-  e.addEventListener("mouseleave", () => {
-    cursor.classList.remove("btn-hover");
-  });
-});
-
-destroyBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  mySlider.destroy();
-});
-
-initBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  mySlider.init();
-});
