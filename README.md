@@ -44,6 +44,7 @@ PR are most welcome! Feel free to improve it.
 - [ ] Add an intersection observer to destroy the slider
 - [ ] Destroy and init keep positions of previous slide poisiton
 - [ ] Add data attributes to control options (with Webflow)
+- [x] Change scroll position to translate position
 - [ ] Optimisation
 - [ ] Make it more smooth
 

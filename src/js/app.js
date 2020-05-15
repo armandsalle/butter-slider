@@ -7,7 +7,7 @@ const destroyBtn = document.querySelector(".js-destroy");
 const initBtn = document.querySelector(".js-init");
 const buttons = [...document.querySelectorAll("button")];
 
-const mySlider = createSlider(".slider", {
+const mySlider = createSlider(".slides", {
   mouseEnter: () => {
     cursor.classList.add("hover");
   },

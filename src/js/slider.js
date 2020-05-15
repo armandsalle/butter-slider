@@ -13,7 +13,6 @@ const createSLider = (target, options) => {
   let isAnimating = false;
   let x = 0;
   let dist = 0;
-  let scrollPercent = (slider.scrollLeft * 100) / slider.offsetWidth;
   let scrollAmount = 0;
   let stopAnimation = false;
 
@@ -30,7 +29,7 @@ const createSLider = (target, options) => {
     down = true;
 
     startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
+    scrollLeft = scrollAmount;
 
     slider.classList.add("active");
     if (options?.mouseDown && typeof options?.mouseDown === "function") {
@@ -70,6 +69,20 @@ const createSLider = (target, options) => {
     dist = scrollLeft - (x - startX) * 3;
   };
 
+  const getScrollPercent = () => {
+    const scrollPercent = map(
+      scrollAmount,
+      0,
+      slider.scrollWidth - slider.offsetWidth,
+      0,
+      100
+    );
+
+    if (options?.callback && typeof options?.callback === "function") {
+      options.callback(roundToTwo(scrollPercent));
+    }
+  };
+
   const anime = () => {
     isAnimating = true;
 
@@ -82,21 +95,11 @@ const createSLider = (target, options) => {
     }
 
     // LERP functions
-    scrollAmount += (dist - scrollAmount) * 0.06;
+    scrollAmount += (dist - scrollAmount) * 0.15;
 
-    slider.scrollLeft = scrollAmount;
+    slider.style.transform = `translateX(${-scrollAmount.toFixed(2)}px)`;
 
-    scrollPercent = map(
-      slider.scrollLeft,
-      0,
-      slider.scrollWidth - slider.offsetWidth,
-      0,
-      100
-    );
-
-    if (options?.callback && typeof options?.callback === "function") {
-      options.callback(roundToTwo(scrollPercent));
-    }
+    getScrollPercent();
 
     if (!stopAnimation) {
       requestAnimationFrame(anime);
@@ -112,9 +115,11 @@ const createSLider = (target, options) => {
     isAnimating = false;
     x = 0;
     dist = 0;
-    scrollPercent = (slider.scrollLeft * 100) / slider.offsetWidth;
     scrollAmount = 0;
     stopAnimation = false;
+
+    slider.style.transform = "translateX(0px)";
+    getScrollPercent();
 
     slider.addEventListener("mousedown", mousedown);
     slider.addEventListener("mouseleave", mouseleave);

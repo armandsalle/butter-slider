@@ -39,7 +39,7 @@ body {
     pointer-events: none;
     z-index: 999;
     transition: background .2s ease-in, width .2s ease-in, height .2s ease-in;
-    will-change: background, width, height;
+    will-change: background, width, height, top, left;
 }
 
 .cursor.hover {
@@ -92,15 +92,18 @@ button:hover {
 }
 
 .slider {
-    display: inline-flex;
-    flex-wrap: nowrap;
+    width: 100vw;
     overflow-x: hidden;
-    width: 100%;
-    list-style: none;
+}
+
+.slides {
+    display: flex;
+    will-change: transform;
+    overflow-x: visible;
 }
 
 .slide {
-    flex-shrink: 0;
+    flex: 0 0 auto;
     width: 300px;
     margin-right: 10vw;
     user-select: none;
