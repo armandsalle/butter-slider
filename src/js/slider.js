@@ -69,7 +69,7 @@ const createSLider = (container, slidable, options) => {
     if (!down) return;
 
     x = e.pageX - slider.offsetLeft;
-    dist = scrollLeft - (x - startX) * 3;
+    dist = scrollLeft - (x - startX) * 2;
   };
 
   const getScrollPercent = () => {

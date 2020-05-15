@@ -9,7 +9,9 @@
     box-sizing: border-box;
 }
 
-a {
+a,
+.js-alert {
+    text-decoration: underline;
     color: currentColor;
 }
 
@@ -38,6 +40,7 @@ body {
     border-radius: 50%;
     pointer-events: none;
     z-index: 999;
+
     transition: background .2s ease-in, width .2s ease-in, height .2s ease-in;
     will-change: background, width, height, top, left;
 }
@@ -45,6 +48,7 @@ body {
 .cursor.hover {
     width: 72px;
     height: 72px;
+
 }
 
 .cursor.active {
@@ -81,14 +85,16 @@ button {
     font-weight: 700;
     font-size: 14px;
     color: white;
-    transition: background-color .2s ease-in-out;
+    border: 2px solid transparent;
+    transition: background-color .2s ease-in-out, border-color .1s ease-out;
     cursor: none;
     user-select: none;
     margin-right: 10px;
 }
 
 button:hover {
-    background-color: rgb(129, 129, 129);
+    background-color: rgb(143, 143, 143);
+    border-color: rgb(71, 71, 71);
 }
 
 .slider {

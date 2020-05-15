@@ -5,6 +5,7 @@ const cursor = document.querySelector(".cursor");
 const bar = document.querySelector(".bar");
 const destroyBtn = document.querySelector(".js-destroy");
 const initBtn = document.querySelector(".js-init");
+const alertTag = document.querySelector(".js-alert");
 const buttons = [...document.querySelectorAll("button")];
 
 const mySlider = createSlider(".slider", ".slides", {
@@ -55,3 +56,8 @@ if (
     mySlider.init();
   });
 }
+
+alertTag.addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("It works");
+});
