@@ -2,11 +2,14 @@ import { roundToTwo, map } from "./utils";
 
 /**
  *
- * @param {string} target CSS selector of the slider
+ * @param {string} container CSS selector of the slider
+ * @param {string} slidable CSS selector of the slider
  * @param {object} options callback options
  */
-const createSLider = (target, options) => {
-  const slider = document.querySelector(target);
+const createSLider = (container, slidable, options) => {
+  const containerSlider = document.querySelector(container);
+  const slider = document.querySelector(slidable);
+
   let down = false;
   let startX = 0;
   let scrollLeft = 0;
@@ -121,18 +124,18 @@ const createSLider = (target, options) => {
     slider.style.transform = "translateX(0px)";
     getScrollPercent();
 
-    slider.addEventListener("mousedown", mousedown);
-    slider.addEventListener("mouseleave", mouseleave);
-    slider.addEventListener("mouseup", mouseup);
-    slider.addEventListener("mousemove", mousemove);
+    containerSlider.addEventListener("mousedown", mousedown);
+    containerSlider.addEventListener("mouseleave", mouseleave);
+    containerSlider.addEventListener("mouseup", mouseup);
+    containerSlider.addEventListener("mousemove", mousemove);
   };
 
   const destroy = () => {
     stopAnimation = true;
-    slider.removeEventListener("mousedown", mousedown);
-    slider.removeEventListener("mouseleave", mouseleave);
-    slider.removeEventListener("mouseup", mouseup);
-    slider.removeEventListener("mousemove", mousemove);
+    containerSlider.removeEventListener("mousedown", mousedown);
+    containerSlider.removeEventListener("mouseleave", mouseleave);
+    containerSlider.removeEventListener("mouseup", mouseup);
+    containerSlider.removeEventListener("mousemove", mousemove);
   };
 
   return {
