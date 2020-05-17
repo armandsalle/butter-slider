@@ -4,11 +4,15 @@ The slider is live [here](https://slider-drag.netlify.app/)
 
 ## Installation
 
-Clone the repo and install `parcel` globally. You need npm on your machine.
+Clone the repo.
 
 Then:
 
-1. Run: `parcel index.html`.
+1. Run: `npm run watch`
+2. Run: `cd example`
+3. Run: `npm run dev`
+
+Entry point is in `src/index.js`. And demo site is in the `example` directory.
 
 ## How To Use
 
@@ -28,10 +32,12 @@ createSlider(".slider", {
   mouseUp: () => {
     // When the user unclick
   },
-  callback: (e) => {
+  scrollPercent: (e) => {
     // This function is triggered when the slider slide.
     // it return an number between 0 and 100, depending on the scroll position
   },
+  multiplicateur: /* Integer : Slider speed */,
+  smoothAmount: /* Integer : How many percent of the distance is use in the LERP function */,
 });
 ```
 
@@ -42,10 +48,10 @@ PR are most welcome! Feel free to improve it.
 - [x] Destroy slider
 - [ ] Touch event listener
 - [ ] Add an intersection observer to destroy the slider
-- [ ] Destroy and init keep positions of previous slide poisiton
+- [x] Destroy and init keep positions of previous slide poisiton
 - [ ] Add data attributes to control options (with Webflow)
 - [x] Change scroll position to translate position
+- [x] Make it more smooth
 - [ ] Optimisation
-- [ ] Make it more smooth
 
 Inspired by [Basic Agency website](https://basicagency.com/).
