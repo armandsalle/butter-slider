@@ -2,14 +2,19 @@
   "name": "slider",
   "version": "1.0.0",
   "description": "Simple draggable slider",
-  "main": "index.js",
-  "dependencies": {
-    "parcel": "^1.12.4"
+  "main": "src/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.5"
   },
-  "devDependencies": {},
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build src/index.js --out-dir dist --no-source-maps",
+    "watch": "parcel watch src/index.js --out-dir example/js --out-file slider.js"
   },
   "repository": {
     "type": "git",

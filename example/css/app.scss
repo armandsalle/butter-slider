@@ -9,12 +9,6 @@
     box-sizing: border-box;
 }
 
-a,
-.js-alert {
-    text-decoration: underline;
-    color: currentColor;
-}
-
 body {
     min-height: 100vh;
     width: 100vw;
@@ -26,8 +20,14 @@ body {
     background: rgb(241, 241, 241);
     color: rgb(37, 36, 34);
     font-family: sans-serif;
-    cursor: none;
     overflow-x: hidden;
+    cursor: none;
+}
+
+a,
+.js-alert {
+    text-decoration: underline;
+    color: currentColor;
 }
 
 .cursor {
@@ -43,21 +43,20 @@ body {
 
     transition: background .2s ease-in, width .2s ease-in, height .2s ease-in;
     will-change: background, width, height, top, left;
-}
 
-.cursor.hover {
-    width: 72px;
-    height: 72px;
+    &.hover {
+        width: 72px;
+        height: 72px;
+    }
 
-}
+    &.active {
+        background: rgb(73, 73, 73);
+    }
 
-.cursor.active {
-    background: rgb(73, 73, 73);
-}
-
-.cursor.btn-hover {
-    width: 0px;
-    height: 0px;
+    &.btn-hover {
+        width: 0px;
+        height: 0px;
+    }
 }
 
 .app {
@@ -90,16 +89,24 @@ button {
     cursor: none;
     user-select: none;
     margin-right: 10px;
+
+    &:hover {
+        background-color: rgb(143, 143, 143);
+        border-color: rgb(71, 71, 71);
+    }
 }
 
-button:hover {
-    background-color: rgb(143, 143, 143);
-    border-color: rgb(71, 71, 71);
-}
+
 
 .slider {
     width: 100vw;
     overflow-x: hidden;
+
+    & .content {
+        font-size: 18px;
+        line-height: 1.4;
+        padding-right: 10px;
+    }
 }
 
 .slides {
@@ -114,40 +121,34 @@ button:hover {
     margin-right: 10vw;
     user-select: none;
     padding-bottom: 35px;
-}
 
-.slide:first-of-type {
-    margin-left: 10vw;
-}
+    &:first-of-type {
+        margin-left: 10vw;
+    }
 
-.slide:last-of-type {
-    width: calc(300px + 10%);
-    padding-right: 10%;
-}
+    &:last-of-type {
+        width: calc(300px + 10%);
+        padding-right: 10%;
+    }
 
-.slide .logo {
-    width: 100%;
-    height: 200px;
-    background-color: rgb(160, 160, 160);
-    margin-bottom: 30px;
-}
+    & .logo {
+        width: 100%;
+        height: 200px;
+        background-color: rgb(160, 160, 160);
+        margin-bottom: 30px;
+    }
 
-.slide .divider {
-    width: 40px;
-    height: 3px;
-    background-color: rgb(37, 36, 34);
-    margin-bottom: 60px;
-}
+    & .divider {
+        width: 40px;
+        height: 3px;
+        background-color: rgb(37, 36, 34);
+        margin-bottom: 60px;
+    }
 
-.slide .title {
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-
-.slider .content {
-    font-size: 18px;
-    line-height: 1.4;
-    padding-right: 10px;
+    & .title {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
 }
 
 .progress {
@@ -172,26 +173,22 @@ button:hover {
     background-color: rgb(37, 36, 34);
 }
 
-@media (any-hover: hover) {
-    .slider::-webkit-scrollbar {
-        display: none;
-    }
-}
+// @media (any-hover: hover) {
+    //         .slider::-webkit-scrollbar {
+    //             display: none;
+    //         }
+    //     }
 
-@media (any-hover: none) {
-    body {
-        background-color: white;
-    }
+    @media (any-hover: none) {
+        .cursor {
+            display: none;
+        }
 
-    .cursor {
-        display: none;
-    }
+        // .progress {
+        //     display: none;
+        // }
 
-    .progress {
-        display: none;
+        // .slider {
+        //     overflow-x: scroll;
+        // }
     }
-
-    .slider {
-        overflow-x: scroll;
-    }
-}
