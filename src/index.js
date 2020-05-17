@@ -143,7 +143,6 @@ class CreateSLider {
   }
 
   anime = () => {
-    console.log('running')
     this.isAnimating = true
 
     // Can't go over the slider
