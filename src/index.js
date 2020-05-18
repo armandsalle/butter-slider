@@ -219,4 +219,4 @@ class CreateSLider {
   }
 }
 
-export default CreateSLider
+export { CreateSLider }

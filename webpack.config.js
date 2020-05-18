@@ -7,7 +7,7 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
     library: 'slider',
-    libraryTarget: 'var',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
