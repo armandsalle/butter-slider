@@ -1,7 +1,16 @@
 class CreateSLider {
-  constructor(container, slider, options) {
-    this.containerTag = document.querySelector(container)
-    this.sliderTag = document.querySelector(slider)
+  constructor(options) {
+    this.options = { ...options }
+
+    if ((!this.options.container && !this.options.slider) || !this.options) {
+      console.error(
+        `No container and slider selector bro... I can't work like that bro`
+      )
+      return
+    } else {
+      this.containerTag = document.querySelector(this.options?.container)
+      this.sliderTag = document.querySelector(this.options?.slider)
+    }
 
     if (this.sliderTag === null) {
       console.error(
@@ -17,16 +26,15 @@ class CreateSLider {
       return
     }
 
-    this.options = { ...options }
-    this.multiplicateur = parseInt(this.options?.multiplicateur) || 1
-    this.smoothAmount =
-      parseFloat(this.options?.smoothAmount).toFixed(2) || 0.15
     if (this.options?.noTouchEvent) {
       this.options.noTouchEvent = true
     } else {
       this.options.noTouchEvent = false
     }
 
+    this.multiplicateur = parseInt(this.options?.multiplicateur) || 1
+    this.smoothAmount =
+      parseFloat(this.options?.smoothAmount).toFixed(2) || 0.15
     this.down = false
     this.startX = 0
     this.scrollLeft = 0
@@ -35,6 +43,8 @@ class CreateSLider {
     this.dist = 0
     this.scrollAmount = 0
     this.stopAnimation = false
+
+    this.init()
   }
 
   map = (value, x1, y1, x2, y2) => {

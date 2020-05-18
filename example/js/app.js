@@ -8,7 +8,12 @@ const initBtn = document.querySelector('.js-init')
 const alertTag = document.querySelector('.js-alert')
 const buttons = [...document.querySelectorAll('button')]
 
-const mySlider = new CreateSlider('.slider', '.slides', {
+initCursor()
+
+//Init slider
+const mySlider = new CreateSlider({
+  container: '.slider',
+  slider: '.slides',
   mouseEnter: () => {
     cursor.classList.add('hover')
   },
@@ -29,11 +34,7 @@ const mySlider = new CreateSlider('.slider', '.slides', {
   smoothAmount: 0.2,
 })
 
-// Init if it's not a touch screen
-
-mySlider.init()
-initCursor()
-
+// Eventss
 buttons.forEach((e) => {
   e.addEventListener('mousemove', () => {
     cursor.classList.add('btn-hover')

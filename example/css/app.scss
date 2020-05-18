@@ -152,14 +152,12 @@ button {
 }
 
 .progress {
-    position: absolute;
+    position: relative;
     height: 2px;
     width: 90%;
-    background-color: rgb(160, 160, 160);
-    bottom: 0;
-    left: 50%;
-    right: 0;
-    transform: translateX(-50%);
+    background-color: #a0a0a0;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .bar {
@@ -174,21 +172,21 @@ button {
 }
 
 // @media (any-hover: hover) {
-    //         .slider::-webkit-scrollbar {
-    //             display: none;
-    //         }
-    //     }
+//         .slider::-webkit-scrollbar {
+//             display: none;
+//         }
+//     }
 
-    @media (any-hover: none) {
-        .cursor {
-            display: none;
-        }
-
-        // .progress {
-        //     display: none;
-        // }
-
-        // .slider {
-        //     overflow-x: scroll;
-        // }
+@media (any-hover: none) {
+    .cursor {
+        display: none;
     }
+
+    // .progress {
+    //     display: none;
+    // }
+
+    // .slider {
+    //     overflow-x: scroll;
+    // }
+}

@@ -133,11 +133,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var CreateSLider = function CreateSLider(container, slider, options) {
+var CreateSLider = function CreateSLider(options) {
   var _this = this,
-      _this$options9,
-      _this$options10,
-      _this$options11;
+      _this$options11,
+      _this$options12,
+      _this$options13;
 
   _classCallCheck(this, CreateSLider);
 
@@ -242,7 +242,6 @@ var CreateSLider = function CreateSLider(container, slider, options) {
   });
 
   _defineProperty(this, "anime", function () {
-    console.log('running');
     _this.isAnimating = true; // Can't go over the slider
 
     if (_this.dist + _this.scrollAmount <= 0) {
@@ -315,8 +314,17 @@ var CreateSLider = function CreateSLider(container, slider, options) {
     _this.containerTag.removeEventListener('touchmove', _this.mousemove);
   });
 
-  this.containerTag = document.querySelector(container);
-  this.sliderTag = document.querySelector(slider);
+  this.options = _objectSpread({}, options);
+
+  if (!this.options.container && !this.options.slider || !this.options) {
+    console.error("No container and slider selector bro... I can't work like that bro");
+    return;
+  } else {
+    var _this$options9, _this$options10;
+
+    this.containerTag = document.querySelector((_this$options9 = this.options) === null || _this$options9 === void 0 ? void 0 : _this$options9.container);
+    this.sliderTag = document.querySelector((_this$options10 = this.options) === null || _this$options10 === void 0 ? void 0 : _this$options10.slider);
+  }
 
   if (this.sliderTag === null) {
     console.error('Target element does not exist on the page. ', this.sliderTag);
@@ -326,16 +334,14 @@ var CreateSLider = function CreateSLider(container, slider, options) {
     return;
   }
 
-  this.options = _objectSpread({}, options);
-  this.multiplicateur = parseInt((_this$options9 = this.options) === null || _this$options9 === void 0 ? void 0 : _this$options9.multiplicateur) || 1;
-  this.smoothAmount = parseFloat((_this$options10 = this.options) === null || _this$options10 === void 0 ? void 0 : _this$options10.smoothAmount).toFixed(2) || 0.15;
-
   if ((_this$options11 = this.options) === null || _this$options11 === void 0 ? void 0 : _this$options11.noTouchEvent) {
     this.options.noTouchEvent = true;
   } else {
     this.options.noTouchEvent = false;
   }
 
+  this.multiplicateur = parseInt((_this$options12 = this.options) === null || _this$options12 === void 0 ? void 0 : _this$options12.multiplicateur) || 1;
+  this.smoothAmount = parseFloat((_this$options13 = this.options) === null || _this$options13 === void 0 ? void 0 : _this$options13.smoothAmount).toFixed(2) || 0.15;
   this.down = false;
   this.startX = 0;
   this.scrollLeft = 0;
@@ -344,6 +350,7 @@ var CreateSLider = function CreateSLider(container, slider, options) {
   this.dist = 0;
   this.scrollAmount = 0;
   this.stopAnimation = false;
+  this.init();
 };
 
 var _default = CreateSLider;
@@ -376,7 +383,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56963" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64984" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
