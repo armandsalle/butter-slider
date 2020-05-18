@@ -24,6 +24,10 @@ body {
     cursor: none;
 }
 
+.cursor-on {
+    cursor: default;
+}
+
 a,
 .js-alert {
     text-decoration: underline;

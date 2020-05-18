@@ -1,5 +1,5 @@
 import initCursor from './cursor'
-import CreateSlider from './slider'
+import { CreateSlider } from './slider'
 
 const cursor = document.querySelector('.cursor')
 const bar = document.querySelector('.bar')
@@ -10,7 +10,7 @@ const buttons = [...document.querySelectorAll('button')]
 
 initCursor()
 
-//Init slider
+// //Init slider
 const mySlider = new CreateSlider({
   container: '.slider',
   slider: '.slides',
@@ -34,17 +34,6 @@ const mySlider = new CreateSlider({
   smoothAmount: 0.2,
 })
 
-// Eventss
-buttons.forEach((e) => {
-  e.addEventListener('mousemove', () => {
-    cursor.classList.add('btn-hover')
-  })
-
-  e.addEventListener('mouseleave', () => {
-    cursor.classList.remove('btn-hover')
-  })
-})
-
 destroyBtn.addEventListener('click', (e) => {
   e.preventDefault()
   mySlider.destroy()
@@ -53,6 +42,17 @@ destroyBtn.addEventListener('click', (e) => {
 initBtn.addEventListener('click', (e) => {
   e.preventDefault()
   mySlider.init()
+})
+
+// Events
+buttons.forEach((e) => {
+  e.addEventListener('mousemove', () => {
+    cursor.classList.add('btn-hover')
+  })
+
+  e.addEventListener('mouseleave', () => {
+    cursor.classList.remove('btn-hover')
+  })
 })
 
 alertTag.addEventListener('click', (e) => {

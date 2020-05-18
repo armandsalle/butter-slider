@@ -10,8 +10,8 @@
     "sass": "^1.26.5"
   },
   "scripts": {
-    "dev": "parcel index.html --out-dir dev",
-    "build": "parcel build index.html --out-dir dist --no-source-maps"
+    "dev": "parcel *.html --out-dir dev",
+    "build": "parcel build *.html --out-dir dist --no-source-maps"
   },
   "keywords": [],
   "repository": {
