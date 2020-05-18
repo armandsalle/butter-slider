@@ -1,4 +1,4 @@
-class CreateSLider {
+class CreateSlider {
   constructor(options) {
     this.options = { ...options }
 
@@ -221,4 +221,4 @@ class CreateSLider {
   }
 }
 
-export { CreateSLider }
+export { CreateSlider }
