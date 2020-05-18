@@ -34,7 +34,9 @@ class CreateSLider {
 
     this.multiplicateur = parseInt(this.options?.multiplicateur) || 1
     this.smoothAmount =
-      parseFloat(this.options?.smoothAmount).toFixed(2) || 0.15
+      parseFloat(this.options?.smoothAmount).toFixed(2) === 'NaN'
+        ? 0.15
+        : parseFloat(this.options?.smoothAmount).toFixed(2)
     this.down = false
     this.startX = 0
     this.scrollLeft = 0
