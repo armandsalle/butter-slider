@@ -97,6 +97,7 @@ PR are most welcome! Feel free to improve it.
 - [ ] Optimisation
 - [ ] Handle errors
 - [ ] Better doc
+- [ ] Create releases
 - [ ] Put the code on a CDN
 - [ ] Create a npm package
 - [x] Destroy slider
