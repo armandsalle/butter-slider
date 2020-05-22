@@ -2,8 +2,8 @@
 
 [![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
-Example with touch event and JS init here [here](https://slider-drag.netlify.app/index.html)
-Example without touch event and data-attributes init here [here](https://slider-drag.netlify.app/example-1.html)
+Example with touch event and JS init here [here](https://slider-drag.netlify.app/).
+Example without touch event and data-attributes init here [here](https://slider-drag.netlify.app/example-1.html).
 
 ## Instalation
 
@@ -16,7 +16,7 @@ Import `createSlider` function in your app and create a new slider. Or access th
 ```javascript
 // With imports
 import { CreateSlider } from './slider.js"
-const mySlider = CreateSlider({})
+const mySlider = new CreateSlider({})
 
 // Without imports
 const mySlider = new slider.CreateSlider({
@@ -71,6 +71,11 @@ If you don't want to setup a javascript class and options, you can use data-attr
 </div>
 ```
 
+```javascript
+slider.autoInit()
+```
+
+
 First you need to init a new slider with an unique id with `data-slider-init="SLIDER_NAME"`. Then use `data-slider-SLIDER_NAME-container` on the container. Then use `data-slider-SLIDER_NAME-slidable` on the slidable element. You can pass options if you want (smoothAmount, multiplicateur and noTouchEvent) with `data-slider-SLIDER_NAME-options="smoothAmount:0.3,multiplicateur:2,noTouchEvent:true"`. And if you want tu use a custom progress bar, add `data-slider-SLIDER_NAME-progress` on the bar. It will change the width (between 0% and 100%) depending on the scroll position of the slider.
 
 ## How to setup localy
@@ -92,6 +97,9 @@ PR are most welcome! Feel free to improve it.
 - [ ] Optimisation
 - [ ] Handle errors
 - [ ] Better doc
+- [ ] Create releases
+- [ ] Put the code on a CDN
+- [ ] Create a npm package
 - [x] Destroy slider
 - [x] Touch event listener
 - [x] Destroy and init keep positions of previous slide poisiton
