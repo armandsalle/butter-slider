@@ -1,4 +1,4 @@
-import { capitalizeDataset } from './utils'
+import { capitalizeDataset, isElement } from './utils'
 import { CreateSlider } from './slider'
 
 const autoInit = () => {
@@ -19,22 +19,35 @@ const autoInit = () => {
     const sliderContainer = document.querySelector(
       `[data-slider-${sliderName}-container]`
     )
+
+    if (!isElement(sliderContainer)) {
+      console.error(`No container was found for this slider : ${sldierName}`)
+      return
+    }
+
     const slider = document.querySelector(
       `[data-slider-${sliderName}-slidable]`
     )
+
+    if (!isElement(slider)) {
+      console.error(`No slider was found for this slider : ${sldierName}`)
+      return
+    }
+
     const optionsTag = document.querySelector(
       `[data-slider-${sliderName}-options]`
     )
+
     const bar = document.querySelector(`[data-slider-${sliderName}-progress]`)
 
-    let optionsArr = {}
+    let options
 
-    if (optionsTag) {
+    if (isElement(optionsTag)) {
       const optionsStr =
         optionsTag.dataset[capitalizeDataset(`slider-${sliderName}-options`)]
 
       // From text like this "option:vlaue" to array like that [{option: optionName, value: theVlaue}]
-      optionsArr = [...optionsStr.split(',')].reduce((acc, el) => {
+      const optionsArr = [...optionsStr.split(',')].reduce((acc, el) => {
         const newOption = {
           option: [...el.split(':')][0],
           value: [...el.split(':')][1],
@@ -42,21 +55,22 @@ const autoInit = () => {
 
         return [...acc, { ...newOption }]
       }, [])
+
+      options = optionsArr.reduce((acc, el) => {
+        return {
+          ...acc,
+          [`${el.option}`]: `${el.value}`,
+        }
+      }, {})
     }
 
     // From array [{option: optionName, value: theVlaue}] to object {optionName: theValue, optionName: theValue, ...}
-    const options = optionsArr.reduce((acc, el) => {
-      return {
-        ...acc,
-        [`${el.option}`]: `${el.value}`,
-      }
-    }, {})
 
     const mySLide = new CreateSlider({
       container: sliderContainer,
       slider: slider,
       ...options,
-      scrollPercent: bar
+      scrollPercent: isElement(bar)
         ? (e) => {
             bar.style.width = `${e}%`
           }
