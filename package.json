@@ -23,13 +23,18 @@
     "lint-staged": "^10.2.9",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "rimraf": "^3.0.2",
+    "rollup": "^2.13.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^6.1.0"
   },
   "scripts": {
     "lint": "eslint 'src/*.js'",
     "lint:fix": "eslint 'src/*.js' --fix",
-    "build": "webpack -p --mode production",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "rollup -c",
     "build:examples": "parcel build src/index.js --out-dir examples/js --out-file slider.js --no-source-maps",
     "watch": "parcel watch src/index.js --out-dir examples/js --out-file slider.js"
   },
@@ -40,8 +45,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint:fix",
-      "git add"
+      "npm run lint:fix"
     ]
   },
   "repository": {
