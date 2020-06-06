@@ -1,0 +1,16 @@
+{
+  "name": "cdn",
+  "version": "1.0.0",
+  "main": "index.html",
+  "private": true,
+  "scripts": {
+    "start": "serve"
+  },
+  "author": "Armand Sallé",
+  "devDependencies": {
+    "serve": "^11.3.2"
+  },
+  "dependencies": {
+    "slider": "file:../.."
+  }
+}
