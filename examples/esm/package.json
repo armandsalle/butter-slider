@@ -14,6 +14,7 @@
   },
   "author": "Armand Sallé",
   "dependencies": {
-    "slider": "file:../.."
+    "butter-slider": "file:../..",
+    "slider": "^1.0.4"
   }
 }

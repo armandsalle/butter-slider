@@ -1,4 +1,4 @@
-# Simple Draggable Slider
+# Butter Slider
 
 [![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 [![Actions Status](https://github.com/armandsalle/Slider/workflows/Build/badge.svg)](https://github.com/armandsalle/Slider/actions)
@@ -16,11 +16,11 @@ Import `createSlider` function in your app and create a new slider. Or access th
 
 ```javascript
 // With imports
-import { CreateSlider } from './slider.js"
-const mySlider = new CreateSlider({})
+import { ButterSlider } from 'butter-slider'
+const mySlider = new ButterSlider({})
 
 // Without imports
-const mySlider = new slider.CreateSlider({
+const mySlider = new butterSlider.ButterSlider({
   container: '.slider-container',
   slider: '.slider-slidable',
   noTouchEvent: /* Default : true. Passe any value you want to disable the sldier on touch screen*/,
@@ -73,7 +73,7 @@ If you don't want to setup a javascript class and options, you can use data-attr
 ```
 
 ```javascript
-slider.autoInit()
+butterSlider.autoButter()
 ```
 
 First you need to init a new slider with an unique id with `data-slider-init="SLIDER_NAME"`. Then use `data-slider-SLIDER_NAME-container` on the container. Then use `data-slider-SLIDER_NAME-slidable` on the slidable element. You can pass options if you want (smoothAmount, multiplicateur and noTouchEvent) with `data-slider-SLIDER_NAME-options="smoothAmount:0.3,multiplicateur:2,noTouchEvent:true"`. And if you want tu use a custom progress bar, add `data-slider-SLIDER_NAME-progress` on the bar. It will change the width (between 0% and 100%) depending on the scroll position of the slider.

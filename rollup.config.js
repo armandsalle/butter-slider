@@ -18,7 +18,7 @@ export default {
       format: 'esm',
     },
     {
-      name: 'slider',
+      name: 'butterSlider',
       file: `${DIST}/${BUNDLE}.umd.js`,
       format: 'umd',
     },

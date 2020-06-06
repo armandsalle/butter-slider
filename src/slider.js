@@ -1,13 +1,11 @@
 import { map, isElement } from './utils'
 
-class CreateSlider {
+class ButterSlider {
   constructor(options) {
     this.options = { ...options }
 
     if ((!this.options.container && !this.options.slider) || !this.options) {
-      console.error(
-        "No container and slider selector bro... I can't work like that bro"
-      )
+      console.error('No container and slider selector.')
       return
     } else {
       this.containerTag = isElement(this.options?.container)
@@ -20,13 +18,13 @@ class CreateSlider {
 
     if (this.sliderTag === null) {
       console.error(
-        'Target element does not exist on the page. ',
+        'Target element does not exist on the page.',
         this.sliderTag
       )
       return
     } else if (this.containerTag === null) {
       console.error(
-        'Target element does not exist on the page. ',
+        'Target element does not exist on the page.',
         this.containerTag
       )
       return
@@ -233,4 +231,4 @@ class CreateSlider {
   }
 }
 
-export { CreateSlider }
+export { ButterSlider }

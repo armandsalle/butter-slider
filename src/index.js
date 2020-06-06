@@ -1,4 +1,4 @@
-import { autoInit } from './autoInit'
-import { CreateSlider } from './slider'
+import { autoButter } from './autoInit'
+import { ButterSlider } from './slider'
 
-export { CreateSlider, autoInit }
+export { ButterSlider, autoButter }

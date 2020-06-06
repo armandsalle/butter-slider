@@ -1,7 +1,7 @@
 {
-  "name": "slider",
+  "name": "butter-slider",
   "version": "1.0.0",
-  "description": "Simple draggable slider",
+  "description": "Simple hold and drag slider",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "sideEffects": false,
@@ -57,6 +57,7 @@
   "keywords": [
     "slider",
     "draggable",
+    "butter",
     "drag",
     "basic"
   ],
