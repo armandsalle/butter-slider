@@ -3,7 +3,7 @@ name: Lint
 on: [push, pull_request]
 
 jobs:
-  build:
+  lint:
     name: Linting
     runs-on: ubuntu-latest
     steps:
@@ -24,7 +24,9 @@ jobs:
       - name: Build
         run: npm run build
 
+  build:
     name: Building
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
