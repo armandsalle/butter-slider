@@ -63,5 +63,8 @@
   "bugs": {
     "url": "https://github.com/armandsalle/Slider/issues"
   },
-  "homepage": "https://github.com/armandsalle/Slider#readme"
+  "homepage": "https://github.com/armandsalle/Slider#readme",
+  "engines": {
+    "node": ">=8"
+  }
 }
