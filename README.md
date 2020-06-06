@@ -1,7 +1,7 @@
 # Simple Draggable Slider
 
 [![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
-[![Build Status](https://travis-ci.org/armandsalle/Slider.svg?branch=master)](https://travis-ci.org/armandsalle/Slider)
+![Build pass](https://github.com/armandsalle/Slider/workflows/actions/badge.svg)
 
 Example with touch event and JS init here [here](https://slider-drag.netlify.app/).
 Example without touch event and data-attributes init here [here](https://slider-drag.netlify.app/example-1.html).
