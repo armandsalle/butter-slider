@@ -27,10 +27,10 @@ const mySlider = new CreateSlider({
   mouseUp: () => {
     cursor.classList.remove('active')
   },
-  scrollPercent: (e) => {
+  getScrollPercent: (e) => {
     bar.style.width = `${e}%`
   },
-  multiplicateur: 2,
+  dragSpeed: 3,
   smoothAmount: 0.2,
   hasTouchEvent: true,
 })

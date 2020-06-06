@@ -44,10 +44,10 @@ class CreateSlider {
       this.options.hasTouchEvent = false
     }
 
-    this.multiplicateur =
-      parseFloat(this.options?.multiplicateur).toFixed(2) === 'NaN'
+    this.dragSpeed =
+      parseFloat(this.options?.dragSpeed).toFixed(2) === 'NaN'
         ? 1
-        : parseFloat(this.options?.multiplicateur).toFixed(2)
+        : parseFloat(this.options?.dragSpeed).toFixed(2)
     this.smoothAmount =
       parseFloat(this.options?.smoothAmount).toFixed(2) === 'NaN'
         ? 0.15
@@ -98,12 +98,12 @@ class CreateSlider {
           this.options.mouseEnter()
         }
         break
-      case 'scrollpercent':
+      case 'getscrollpercent':
         if (
-          this.options?.scrollPercent &&
-          typeof this.options?.scrollPercent === 'function'
+          this.options?.getScrollPercent &&
+          typeof this.options?.getScrollPercent === 'function'
         ) {
-          this.options.scrollPercent(value)
+          this.options.getScrollPercent(value)
         }
         break
       default:
@@ -151,7 +151,7 @@ class CreateSlider {
     if (!this.down) return
 
     this.x = event.pageX - this.sliderTag.offsetLeft
-    this.dist = this.scrollLeft - (this.x - this.startX) * this.multiplicateur
+    this.dist = this.scrollLeft - (this.x - this.startX) * this.dragSpeed
   }
 
   getScrollPercent = () => {
@@ -163,7 +163,7 @@ class CreateSlider {
       100
     )
 
-    this.callCallback('scrollpercent', scrollPercent.toFixed(2))
+    this.callCallback('getscrollpercent', scrollPercent.toFixed(2))
   }
 
   anime = () => {
