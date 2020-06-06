@@ -75,7 +75,6 @@ If you don't want to setup a javascript class and options, you can use data-attr
 slider.autoInit()
 ```
 
-
 First you need to init a new slider with an unique id with `data-slider-init="SLIDER_NAME"`. Then use `data-slider-SLIDER_NAME-container` on the container. Then use `data-slider-SLIDER_NAME-slidable` on the slidable element. You can pass options if you want (smoothAmount, multiplicateur and noTouchEvent) with `data-slider-SLIDER_NAME-options="smoothAmount:0.3,multiplicateur:2,noTouchEvent:true"`. And if you want tu use a custom progress bar, add `data-slider-SLIDER_NAME-progress` on the bar. It will change the width (between 0% and 100%) depending on the scroll position of the slider.
 
 ## How to setup localy

@@ -6,7 +6,7 @@ class CreateSlider {
 
     if ((!this.options.container && !this.options.slider) || !this.options) {
       console.error(
-        `No container and slider selector bro... I can't work like that bro`
+        "No container and slider selector bro... I can't work like that bro"
       )
       return
     } else {
@@ -99,7 +99,9 @@ class CreateSlider {
         ) {
           this.options.scrollPercent(value)
         }
+        break
       default:
+        console.warn('No default case for switch callback')
         break
     }
   }

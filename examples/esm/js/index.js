@@ -1,5 +1,5 @@
+import { CreateSlider } from 'slider'
 import initCursor from './cursor'
-import { CreateSlider } from './slider'
 
 const cursor = document.querySelector('.cursor')
 const bar = document.querySelector('.bar')
@@ -32,6 +32,7 @@ const mySlider = new CreateSlider({
   },
   multiplicateur: 2,
   smoothAmount: 0.2,
+  // noTouchEvent: true,
 })
 
 destroyBtn.addEventListener('click', (e) => {
