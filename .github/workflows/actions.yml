@@ -1,0 +1,25 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
