@@ -4,11 +4,11 @@
   "main": "index.html",
   "private": true,
   "scripts": {
-    "start": "serve"
+    "start": "live-server --open=src --ignore=node_modules"
   },
   "author": "Armand Sallé",
   "devDependencies": {
-    "serve": "^11.3.2"
+    "live-server": "^1.2.1"
   },
   "dependencies": {
     "slider": "file:../.."
