@@ -21,7 +21,7 @@ const autoInit = () => {
     )
 
     if (!isElement(sliderContainer)) {
-      console.error(`No container was found for this slider : ${sldierName}`)
+      console.error(`No container was found for this slider : ${sliderName}`)
       return
     }
 
@@ -30,7 +30,7 @@ const autoInit = () => {
     )
 
     if (!isElement(slider)) {
-      console.error(`No slider was found for this slider : ${sldierName}`)
+      console.error(`No slider was found for this slider : ${sliderName}`)
       return
     }
 
