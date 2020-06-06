@@ -2,7 +2,9 @@
   "name": "slider",
   "version": "1.0.0",
   "description": "Simple draggable slider",
-  "main": "src/index.js",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
+  "sideEffects": false,
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.9.6",
