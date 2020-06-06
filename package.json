@@ -23,7 +23,6 @@
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
-    "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.13.1",
@@ -36,9 +35,7 @@
     "lint:fix": "eslint 'src/*.js' --fix",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "rollup -c",
-    "build:examples": "parcel build src/index.js --out-dir examples/js --out-file slider.js --no-source-maps",
-    "watch": "parcel watch src/index.js --out-dir examples/js --out-file slider.js"
+    "build": "rollup -c"
   },
   "husky": {
     "hooks": {
