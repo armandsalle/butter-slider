@@ -32,7 +32,7 @@ const mySlider = new CreateSlider({
   },
   multiplicateur: 2,
   smoothAmount: 0.2,
-  // noTouchEvent: true,
+  hasTouchEvent: true,
 })
 
 destroyBtn.addEventListener('click', (e) => {

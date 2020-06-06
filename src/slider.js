@@ -32,10 +32,16 @@ class CreateSlider {
       return
     }
 
-    if (this.options?.noTouchEvent) {
-      this.options.noTouchEvent = true
-    } else {
-      this.options.noTouchEvent = false
+    if (
+      this.options?.hasTouchEvent === true &&
+      this.options?.hasTouchEvent === 'true'
+    ) {
+      this.options.hasTouchEvent = true
+    } else if (
+      !this.options?.hasTouchEvent ||
+      this.options?.hasTouchEvent === 'false'
+    ) {
+      this.options.hasTouchEvent = false
     }
 
     this.multiplicateur =
@@ -203,12 +209,12 @@ class CreateSlider {
       this.containerTag.addEventListener('mouseleave', this.mouseleave)
       this.containerTag.addEventListener('mouseup', this.mouseup)
       this.containerTag.addEventListener('mousemove', this.mousemove)
-    } else if (isTouchScreen && !this.options.noTouchEvent) {
+    } else if (isTouchScreen && this.options.hasTouchEvent) {
       this.containerTag.addEventListener('touchstart', this.mousedown)
       this.containerTag.addEventListener('touchleave', this.mouseleave)
       this.containerTag.addEventListener('touchend', this.mouseup)
       this.containerTag.addEventListener('touchmove', this.mousemove)
-    } else if (isTouchScreen && this.options.noTouchEvent) {
+    } else if (isTouchScreen && !this.options.hasTouchEvent) {
       this.containerTag.style.overflowX = 'scroll'
     }
   }
