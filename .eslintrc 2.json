@@ -1,0 +1,17 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "parser": "babel-eslint",
+  "extends": ["standard", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "strict": 0,
+    "prettier/prettier": "error"
+  },
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  }
+}
