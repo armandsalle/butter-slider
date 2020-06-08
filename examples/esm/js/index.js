@@ -1,4 +1,4 @@
-import { ButterSlider } from 'butter-slider'
+import { CreateSlider } from 'butter-slider'
 import initCursor from './cursor'
 
 const cursor = document.querySelector('.cursor')
@@ -11,7 +11,7 @@ const buttons = [...document.querySelectorAll('button')]
 initCursor()
 
 // //Init slider
-const mySlider = new ButterSlider({
+const mySlider = new CreateSlider({
   container: '.slider',
   slider: '.slides',
   mouseEnter: () => {

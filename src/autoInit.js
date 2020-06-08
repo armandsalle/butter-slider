@@ -1,7 +1,7 @@
 import { capitalizeDataset, isElement } from './utils'
-import { ButterSlider } from './slider'
+import { CreateSlider } from './slider'
 
-const autoButter = () => {
+const autoInit = () => {
   const sliders = []
   const sliderTags = [...document.querySelectorAll('[data-slider-init]')]
 
@@ -66,7 +66,7 @@ const autoButter = () => {
 
     // From array [{option: optionName, value: theVlaue}] to object {optionName: theValue, optionName: theValue, ...}
 
-    const newButterSlider = new ButterSlider({
+    const newButterSlider = new CreateSlider({
       container: sliderContainer,
       slider: slider,
       ...options,
@@ -83,4 +83,4 @@ const autoButter = () => {
   return sliders
 }
 
-export { autoButter }
+export { autoInit }

@@ -1,6 +1,6 @@
 import { map, isElement } from './utils'
 
-class ButterSlider {
+class CreateSlider {
   constructor(options) {
     this.options = { ...options }
 
@@ -231,4 +231,4 @@ class ButterSlider {
   }
 }
 
-export { ButterSlider }
+export { CreateSlider }
