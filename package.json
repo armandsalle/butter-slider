@@ -5,6 +5,9 @@
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -35,7 +38,8 @@
     "lint:fix": "eslint 'src/*.js' --fix",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
   },
   "husky": {
     "hooks": {
