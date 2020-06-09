@@ -22,14 +22,14 @@ With a CDN
 
 ```html
 <!-- For Webflow or no bundle project (ES5, no ES6 modules) -->
-<srcipt
+<script
   src="https://unpkg.com/butter-slider@latest/dist/bundle.umd.js"
-></srcipt>
+></script>
 
 <!-- ES6 with modules -->
-<srcipt
+<script
   src="https://unpkg.com/butter-slider@latest/dist/bundle.esm.js"
-></srcipt>
+></script>
 ```
 
 Imports and init
@@ -108,7 +108,7 @@ If you want a simple progress bar add `data-slider-toast-progress` on the elemen
 ### Or with plain vanilla js
 
 ```js
-# ES6 way
+// ES6 way
 import { CreateSlider } from 'butter-slider'
 
 const mySlider = new CreateSlider({
@@ -116,7 +116,7 @@ const mySlider = new CreateSlider({
   slider: '.slider-items', // What to move
 })
 
-# No modules way
+// No modules way
 const mySlider = new butterSlider.CreateSlider({
   container: '.slider-container', // Where to listen events
   slider: '.slider-items', // What to move
