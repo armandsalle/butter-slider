@@ -42,14 +42,8 @@ class CreateSlider {
       this.options.hasTouchEvent = false
     }
 
-    this.dragSpeed =
-      parseFloat(this.options?.dragSpeed).toFixed(2) === 'NaN'
-        ? 1
-        : parseFloat(this.options?.dragSpeed).toFixed(2)
-    this.smoothAmount =
-      parseFloat(this.options?.smoothAmount).toFixed(2) === 'NaN'
-        ? 0.15
-        : parseFloat(this.options?.smoothAmount).toFixed(2)
+    this.dragSpeed = this.getFloatNumber(this.options?.dragSpeed, 1)
+    this.smoothAmount = this.getFloatNumber(this.options?.smoothAmount, 0.15)
     this.down = false
     this.startX = 0
     this.scrollLeft = 0
@@ -62,50 +56,42 @@ class CreateSlider {
     this.init()
   }
 
+  getFloatNumber = (value, defaultValue) =>
+    parseFloat(value).toFixed(2) === 'NaN'
+      ? defaultValue
+      : parseFloat(value).toFixed(2)
+
+  checkCallbackType = (option) => !!(option && typeof option === 'function')
+
   callCallback = (type, value) => {
     switch (type) {
       case 'mousedown':
-        if (
-          this.options?.mouseDown &&
-          typeof this.options?.mouseDown === 'function'
-        ) {
+        if (this.checkCallbackType(this.options?.mouseDown)) {
           this.options.mouseDown()
         }
         break
       case 'mouseleave':
-        if (
-          this.options?.mouseLeave &&
-          typeof this.options?.mouseLeave === 'function'
-        ) {
+        if (this.checkCallbackType(this.options?.mouseLeave)) {
           this.options.mouseLeave()
         }
         break
       case 'mouseup':
-        if (
-          this.options?.mouseUp &&
-          typeof this.options?.mouseUp === 'function'
-        ) {
+        if (this.checkCallbackType(this.options?.mouseUp)) {
           this.options.mouseUp()
         }
         break
       case 'mousemove':
-        if (
-          this.options.mouseEnter &&
-          typeof this.options.mouseEnter === 'function'
-        ) {
+        if (this.checkCallbackType(this.options?.mouseEnter)) {
           this.options.mouseEnter()
         }
         break
       case 'getscrollpercent':
-        if (
-          this.options?.getScrollPercent &&
-          typeof this.options?.getScrollPercent === 'function'
-        ) {
+        if (this.checkCallbackType(this.options?.getScrollPercent)) {
           this.options.getScrollPercent(value)
         }
         break
       default:
-        console.warn('No default case for switch callback')
+        console.warn('No default callback')
         break
     }
   }

@@ -3,48 +3,50 @@ import { CreateSlider } from './slider'
 
 const autoInit = () => {
   const sliders = []
-  const sliderTags = [...document.querySelectorAll('[data-slider-init]')]
+  const initContainers = [
+    ...document.querySelectorAll('[data-butter-container]'),
+  ]
+  const initSliders = [...document.querySelectorAll('[data-butter-slidable]')]
+  const initBars = [...document.querySelectorAll('[data-butter-progress]')]
 
-  if (sliderTags.length === 0) return
+  if (initContainers.length === 0) return
 
-  sliderTags.forEach((e) => {
-    const data = { ...e.dataset }
-    const sliderName = data.sliderInit
+  initContainers.forEach((e) => {
+    const sliderContainer = e
+    const sliderName = e.dataset.butterContainer
 
     if (!sliderName) {
-      console.error('You need to add a unique id on `data-slider-init`')
+      console.error('You need to add a unique id on `data-butter-container`')
       return
     }
 
-    const sliderContainer = document.querySelector(
-      `[data-slider-${sliderName}-container]`
-    )
-
-    if (!isElement(sliderContainer)) {
+    if (!isElement(e)) {
       console.error(`No container was found for this slider : ${sliderName}`)
       return
     }
 
-    const slider = document.querySelector(
-      `[data-slider-${sliderName}-slidable]`
-    )
+    const slider = initSliders.find((el) => {
+      return el.dataset.butterSlidable === sliderName
+    })
 
     if (!isElement(slider)) {
-      console.error(`No slider was found for this slider : ${sliderName}`)
+      console.error(
+        `No slidable element was found for this slider : ${sliderName}`
+      )
       return
     }
 
     const optionsTag = document.querySelector(
-      `[data-slider-${sliderName}-options]`
+      `[data-butter-${sliderName}-options]`
     )
 
-    const bar = document.querySelector(`[data-slider-${sliderName}-progress]`)
+    const bar = initBars.find((el) => el.dataset.butterProgress === sliderName)
 
     let options
 
     if (isElement(optionsTag)) {
       const optionsStr =
-        optionsTag.dataset[capitalizeDataset(`slider-${sliderName}-options`)]
+        optionsTag.dataset[capitalizeDataset(`butter-${sliderName}-options`)]
 
       // From text like this "option:vlaue" to array like that [{option: optionName, value: theVlaue}]
       const optionsArr = [...optionsStr.split(',')].reduce((acc, el) => {
