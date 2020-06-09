@@ -13,6 +13,7 @@ body {
   display: flex;
   align-items: center;
   position: relative;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   background: #f1f1f1;
@@ -71,7 +72,21 @@ button:hover {
   line-height: 1.4;
   padding-right: 10px;
 }
+.slider-2 {
+  width: 100vw;
+  overflow-x: hidden;
+}
+.slider-2 .content {
+  font-size: 18px;
+  line-height: 1.4;
+  padding-right: 10px;
+}
 .slides {
+  display: flex;
+  will-change: transform;
+  overflow-x: visible;
+}
+.slides-2 {
   display: flex;
   will-change: transform;
   overflow-x: visible;
