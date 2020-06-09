@@ -30,18 +30,19 @@ With a CDN
 <srcipt
   src="https://unpkg.com/butter-slider@latest/dist/bundle.esm.js"
 ></srcipt>
+```
 
-** Imports and init ** 
+Imports and init
 
 ```js
-# With imports
+// With imports
 import { CreateSlider, autoInit } from 'butter-slider'
 const reallyCoolSlider = new CreateSlider(...)
 const autoInitSliders = autoInit()
 ```
 
 ```js
-# Without imports
+// Without imports
 const reallyCoolSlider = new butterSlider.CreateSlider(...)
 const autoInitSliders = butterSlider.autoInit()
 ```
