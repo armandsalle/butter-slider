@@ -20,7 +20,7 @@ yarn add butter-slider
 
 With a CDN
 
-````html
+```html
 <!-- For Webflow or no bundle project (ES5, no ES6 modules) -->
 <srcipt
   src="https://unpkg.com/butter-slider@latest/dist/bundle.umd.js"
