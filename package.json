@@ -1,8 +1,8 @@
 {
   "name": "butter-slider",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple hold and drag slider",
-  "main": "dist/bundle.cjs.js",
+  "main": "dist/bundle.umd.js",
   "module": "dist/bundle.esm.js",
   "sideEffects": false,
   "files": [
