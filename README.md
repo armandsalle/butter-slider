@@ -1,10 +1,10 @@
 # Butter Slider
 
-[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
-
-[![Actions Status](https://github.com/armandsalle/Slider/workflows/Build/badge.svg)](https://github.com/armandsalle/Slider/actions)
+[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Actions Status](https://github.com/armandsalle/Slider/workflows/Build/badge.svg)](https://github.com/armandsalle/Slider/actions) [![npm version](https://badge.fury.io/js/butter-slider.svg)](https://www.npmjs.com/package/butter-slider)
 
 A [smooth, simple, lightweight, vanilla JS, no dependencies] drag and hold slider, made for easy setup.
+
+Simple demo on [CodeSandbox](https://codesandbox.io/s/butter-slider-demo-rwxwi)
 
 ## Install
 
@@ -22,29 +22,26 @@ With a CDN
 
 ```html
 <!-- For Webflow or no bundle project (ES5, no ES6 modules) -->
-<srcipt
-  src="https://unpkg.com/butter-slider@latest/dist/bundle.umd.js"
-></srcipt>
+<script src="unpkg.com/butter-slider@latest/bundle.umd.js"></script>
 
 <!-- ES6 with modules -->
-<srcipt
-  src="https://unpkg.com/butter-slider@latest/dist/bundle.esm.js"
-></srcipt>
+<script src="unpkg.com/butter-slider@latest/bundle.esm.js"></script>
 ```
 
 Imports and init
 
 ```js
-// With imports
+# With imports
 import { CreateSlider, autoInit } from 'butter-slider'
+
 const reallyCoolSlider = new CreateSlider(...)
-const autoInitSliders = autoInit()
+const autoInitSlider = autoInit()
 ```
 
 ```js
-// Without imports
+# Without imports
 const reallyCoolSlider = new butterSlider.CreateSlider(...)
-const autoInitSliders = butterSlider.autoInit()
+const autoInitSlider = butterSlider.autoInit()
 ```
 
 ## Usage
@@ -55,53 +52,41 @@ There is 2 ways to use it. With pure javascript or with data-attributes directly
 
 `autoButter` can be used only with data attributes and return an array with your sliders in it.
 
-```html
-<body data-slider-init="toast">
-  <div class="slider-container" data-slider-toast-container>
-    <div class="slider-items" data-slider-toast-slidable>
-      <div class="slide">
-        <p>
-          Hello,
-        </p>
-      </div>
-      <div class="slide">
-        <p>
-          Is it me
-        </p>
-      </div>
-      <div class="slide">
-        you're looking for
-      </div>
-      ...
-    </div>
-  </div>
+For auto init to works you need `data-butter-container` and `data-butter-slidable`. Value passed on the two data attributes need to be the same to works.
 
-  <srcipt src="unpkg.com/butter-slider@latest/bundle.umd.js"></srcipt>
-  <script>
-    butterSlider.autoInit()
-  </script>
-</body>
+**Required**
+
+```html
+<div data-butter-container="myButterSliderName">
+  <div data-butter-slidable="myButterSliderName">
+    <slides />
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="unpkg.com/butter-slider@latest/bundle.umd.js"></script>
+<script>
+  butterSlider.autoInit()
+</script>
 ```
 
 **Options with data attributes**
 
-You can pass params with `data-slider-toast-options`
+You can pass params with `data-butter-NAME-options`. You have access to 3 params : **smoothAmount**, **dragSpeed** and **hasTouchEvent**
 
 ```html
 <div
-  class="slider-container"
-  data-slider-toast-container
-  data-slider-toast-options="smoothAmount:0.15,dragSpeed:2.5,hasTouchEvent:false"
+  data-butter-myButterSliderName-options="smoothAmount:0.15,dragSpeed:2.5,hasTouchEvent:false"
 ></div>
 ```
 
-**Bonus**
+**Progress bar**
 
-If you want a simple progress bar add `data-slider-toast-progress` on the element you want to anime with ease the width with the scroll amount.
+If you want a simple progress bar add `data-butter-progress` on the element you want to anime with ease the width with the scroll amount.
 
 ```html
 <div class="progress">
-  <div class="bar" data-slider-toast-progress></div>
+  <div class="bar" data-butter-progress="myButterSliderName"></div>
 </div>
 ```
 
