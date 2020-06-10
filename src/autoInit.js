@@ -67,7 +67,10 @@ const getSlider = (e, initSliders, initBars) => {
       : null,
   }
 }
-
+/**
+ * Auto init sliders with data-attributes
+ * @returns {Array} Array of sliders
+ */
 const autoInit = () => {
   const sliders = []
   const initContainers = [

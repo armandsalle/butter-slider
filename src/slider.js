@@ -1,6 +1,20 @@
 import { map, isElement } from './utils'
 
+/** Class creating a butter slider. */
 class CreateSlider {
+  /**
+   * Create a new slider with params.
+   * @param {string|HTMLElement} container - Element where listeners will be add.
+   * @param {string|HTMLElement} slider - Element that will move.
+   * @param {boolean} [hasTouchEvent=false] - Add touch envents.
+   * @param {number|string} [dragSpeed=1] - Speed of the drag and hold.
+   * @param {number|string} [smoothAmount=0.15] - Smooth amount.
+   * @param {function} [mouseEnter] - Callback call when mouse enter the container.
+   * @param {function} [mouseLeave] - Callback call when mouse leave the container.
+   * @param {function} [mouseUp] - Callback call when user release click on the container.
+   * @param {function} [mouseDown] - Callback call when user press click on the container.
+   * @param {function(int)} [getScrollPercent] - Callback call at each frames and return the scroll amount in percent between 0 and 100.
+   */
   constructor(options) {
     this.options = { ...options }
 
