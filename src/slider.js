@@ -1,4 +1,4 @@
-import { map, isElement } from './utils'
+import { map, isElement, getFloatNumber } from './utils'
 
 /** Class creating a butter slider. */
 class CreateSlider {
@@ -56,8 +56,8 @@ class CreateSlider {
       this.options.hasTouchEvent = false
     }
 
-    this.dragSpeed = this.getFloatNumber(this.options?.dragSpeed, 1)
-    this.smoothAmount = this.getFloatNumber(this.options?.smoothAmount, 0.15)
+    this.dragSpeed = getFloatNumber(this.options?.dragSpeed, 1)
+    this.smoothAmount = getFloatNumber(this.options?.smoothAmount, 0.15)
     this.down = false
     this.startX = 0
     this.scrollLeft = 0
@@ -69,11 +69,6 @@ class CreateSlider {
 
     this.init()
   }
-
-  getFloatNumber = (value, defaultValue) =>
-    parseFloat(value).toFixed(2) === 'NaN'
-      ? defaultValue
-      : parseFloat(value).toFixed(2)
 
   checkCallbackType = (option) => !!(option && typeof option === 'function')
 
