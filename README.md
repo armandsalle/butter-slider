@@ -31,7 +31,7 @@ With a CDN
 Imports and init
 
 ```js
-# With imports
+// With imports
 import { CreateSlider, autoInit } from 'butter-slider'
 
 const reallyCoolSlider = new CreateSlider(...)
@@ -39,7 +39,7 @@ const autoInitSlider = autoInit()
 ```
 
 ```js
-# Without imports
+// Without imports
 const reallyCoolSlider = new butterSlider.CreateSlider(...)
 const autoInitSlider = butterSlider.autoInit()
 ```
