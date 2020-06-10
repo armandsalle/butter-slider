@@ -93,7 +93,7 @@ If you want a simple progress bar add `data-butter-progress` on the element you 
 ### Or with plain vanilla js
 
 ```js
-# ES6 way
+// ES6 way
 import { CreateSlider } from 'butter-slider'
 
 const mySlider = new CreateSlider({
@@ -101,7 +101,7 @@ const mySlider = new CreateSlider({
   slider: '.slider-items', // What to move
 })
 
-# No modules way
+// No modules way
 const mySlider = new butterSlider.CreateSlider({
   container: '.slider-container', // Where to listen events
   slider: '.slider-items', // What to move
