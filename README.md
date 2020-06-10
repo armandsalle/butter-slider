@@ -22,7 +22,7 @@ With a CDN
 
 ```html
 <!-- For Webflow or no bundle project (ES5, no ES6 modules) -->
-<script src="unpkg.com/butter-slider@latest/bundle.umd.js"></script>
+<script src="https://unpkg.com/butter-slider"></script>
 
 <!-- ES6 with modules -->
 <script src="unpkg.com/butter-slider@latest/bundle.esm.js"></script>
