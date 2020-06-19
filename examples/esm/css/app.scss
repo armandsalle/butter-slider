@@ -192,3 +192,21 @@ button {
     //     overflow-x: scroll;
     // }
 }
+
+.container-b {
+    width: 500px;
+    height: 500px;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    background: rgb(59, 59, 61);
+}
+
+.slider-b {
+    width: 100vh;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 200px;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    flex: 0 0 auto;
+}

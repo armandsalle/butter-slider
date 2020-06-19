@@ -1,4 +1,4 @@
-import { map, isElement, getFloatNumber } from './utils'
+import { map, isElement, getFloatNumber, checkCallbackType } from './utils'
 
 /** Class creating a butter slider. */
 class CreateSlider {
@@ -56,8 +56,19 @@ class CreateSlider {
       this.options.hasTouchEvent = false
     }
 
+    const leftMargin = window
+      .getComputedStyle(this.sliderTag)
+      .getPropertyValue('margin-left')
+    const rightMargin = window
+      .getComputedStyle(this.sliderTag)
+      .getPropertyValue('margin-right')
+
+    this.sliderTagLeft = parseInt(leftMargin)
+    this.sliderTagRight = parseInt(rightMargin)
+
     this.dragSpeed = getFloatNumber(this.options?.dragSpeed, 1)
     this.smoothAmount = getFloatNumber(this.options?.smoothAmount, 0.15)
+
     this.down = false
     this.startX = 0
     this.scrollLeft = 0
@@ -70,32 +81,30 @@ class CreateSlider {
     this.init()
   }
 
-  checkCallbackType = (option) => !!(option && typeof option === 'function')
-
   callCallback = (type, value) => {
     switch (type) {
       case 'mousedown':
-        if (this.checkCallbackType(this.options?.mouseDown)) {
+        if (checkCallbackType(this.options?.mouseDown)) {
           this.options.mouseDown()
         }
         break
       case 'mouseleave':
-        if (this.checkCallbackType(this.options?.mouseLeave)) {
+        if (checkCallbackType(this.options?.mouseLeave)) {
           this.options.mouseLeave()
         }
         break
       case 'mouseup':
-        if (this.checkCallbackType(this.options?.mouseUp)) {
+        if (checkCallbackType(this.options?.mouseUp)) {
           this.options.mouseUp()
         }
         break
       case 'mousemove':
-        if (this.checkCallbackType(this.options?.mouseEnter)) {
+        if (checkCallbackType(this.options?.mouseEnter)) {
           this.options.mouseEnter()
         }
         break
       case 'getscrollpercent':
-        if (this.checkCallbackType(this.options?.getScrollPercent)) {
+        if (checkCallbackType(this.options?.getScrollPercent)) {
           this.options.getScrollPercent(value)
         }
         break
@@ -166,8 +175,19 @@ class CreateSlider {
     if (this.dist + this.scrollAmount <= 0) {
       this.dist = 0
     }
-    if (this.dist >= this.sliderTag.scrollWidth - this.sliderTag.offsetWidth) {
-      this.dist = this.sliderTag.scrollWidth - this.sliderTag.offsetWidth
+
+    if (
+      this.dist >=
+      this.sliderTag.scrollWidth -
+        this.containerTag.offsetWidth +
+        this.sliderTagLeft +
+        this.sliderTagRight
+    ) {
+      this.dist =
+        this.sliderTag.scrollWidth -
+        this.containerTag.offsetWidth +
+        this.sliderTagLeft +
+        this.sliderTagRight
     }
 
     // LERP functions
