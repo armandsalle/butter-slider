@@ -9,6 +9,7 @@
     "sass": "^1.26.5"
   },
   "scripts": {
+    "start": "npm i && npm run dev",
     "dev": "parcel index.html",
     "build": "parcel build index.html --out-dir dist --no-source-maps"
   },

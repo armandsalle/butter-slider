@@ -35,6 +35,14 @@ const mySlider = new CreateSlider({
   hasTouchEvent: true,
 })
 
+const secondSlider = new CreateSlider({
+  container: '.container-b',
+  slider: '.slider-b',
+})
+
+secondSlider.smoothAmount = 0.2
+secondSlider.dragSpeed = 2
+
 destroyBtn.addEventListener('click', (e) => {
   e.preventDefault()
   mySlider.destroy()

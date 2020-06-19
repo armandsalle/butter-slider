@@ -13,3 +13,11 @@ export const capitalizeDataset = (str) => {
   }
   return splitStr.join('')
 }
+
+export const getFloatNumber = (value, defaultValue) =>
+  parseFloat(value).toFixed(2) === 'NaN'
+    ? defaultValue
+    : parseFloat(value).toFixed(2)
+
+export const checkCallbackType = (option) =>
+  !!(option && typeof option === 'function')
