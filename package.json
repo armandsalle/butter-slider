@@ -38,8 +38,8 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "lint": "eslint 'src/*.ts'",
-    "lint:fix": "eslint 'src/*.ts' --fix",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "build": "rollup -c",
@@ -52,7 +52,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,jsx,ts,tsx}": [
       "npm run lint:fix"
     ]
   },
