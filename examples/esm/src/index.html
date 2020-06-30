@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slider</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/app.scss" />
   </head>
   <body>
     <div class="app">
-      <div class="slider" data-butter-container="plop">
-        <div
-          class="slides"
-          data-butter-slidable="plop"
-          data-butter-plop-options="smoothAmount:0.15,dragSpeed:2.5"
-        >
+      <div class="cta">
+        <button class="js-destroy">DESTROY</button>
+        <button class="js-init">INIT</button>
+      </div>
+      <div class="slider">
+        <div class="slides">
           <div class="slide">
             <div class="logo"></div>
             <div class="divider"></div>
@@ -149,33 +149,16 @@
         </div>
       </div>
       <div class="progress">
-        <div class="bar" data-butter-progress="plop"></div>
+        <div class="bar"></div>
       </div>
 
-      <div class="w-container" data-butter-container="plip">
-        <div
-          class="w-slides"
-          data-butter-slidable="plip"
-          data-butter-plip-options="smoothAmount:0.15,dragSpeed:2.5"
-        >
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-          <div class="w-item"></div>
-        </div>
+      <div class="container-b">
+        <div class="slider-b"></div>
       </div>
     </div>
-    <script src="../node_modules/butter-slider/dist/bundle.umd.js"></script>
-    <script>
-      const sliders = butterSlider.autoInit()
-    </script>
+
+    <div class="cursor"></div>
+
+    <script src="js/index.js"></script>
   </body>
 </html>

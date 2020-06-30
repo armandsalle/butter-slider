@@ -171,7 +171,6 @@ button:hover {
   }
 }
 
-
 .w-container {
   width: 100vw;
   overflow-x: hidden;
@@ -179,8 +178,8 @@ button:hover {
 
 .w-slides {
   display: flex;
-  will-change: transform;
   overflow-x: visible;
+  margin: 0 100px;
 }
 
 .w-item {

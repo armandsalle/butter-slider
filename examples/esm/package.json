@@ -6,16 +6,14 @@
     "@babel/core": "^7.9.6",
     "autoprefixer": "^9.8.0",
     "parcel-bundler": "^1.12.4",
-    "sass": "^1.26.5"
+    "rimraf": "^3.0.2",
+    "sass": "^1.26.9"
   },
   "scripts": {
-    "start": "npm i && npm run dev",
-    "dev": "parcel index.html",
-    "build": "parcel build index.html --out-dir dist --no-source-maps"
+    "dev": "parcel ./src/index.html --open",
+    "prebuild": "npm run clean",
+    "build": "parcel build ./src/index.html --out-dir dist --no-source-maps",
+    "clean": "rimraf .cache dist"
   },
-  "author": "Armand Sallé",
-  "dependencies": {
-    "butter-slider": "file:../..",
-    "slider": "^1.0.4"
-  }
+  "author": "Armand Sallé"
 }
