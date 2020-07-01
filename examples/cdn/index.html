@@ -4,16 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slider</title>
-    <link rel="stylesheet" href="./css/app.scss" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="app">
-      <div class="cta">
-        <button class="js-destroy">DESTROY</button>
-        <button class="js-init">INIT</button>
-      </div>
-      <div class="slider">
-        <div class="slides">
+      <div class="slider" data-butter-container="plop">
+        <div class="slides" data-butter-slidable="plop">
           <div class="slide">
             <div class="logo"></div>
             <div class="divider"></div>
@@ -149,16 +145,33 @@
         </div>
       </div>
       <div class="progress">
-        <div class="bar"></div>
+        <div class="bar" data-butter-progress="plop"></div>
       </div>
 
-      <div class="container-b">
-        <div class="slider-b"></div>
+      <div class="w-container" data-butter-container="plip">
+        <div
+          class="w-slides"
+          data-butter-slidable="plip"
+          data-butter-plip-options="smoothAmount:0.1,dragSpeed:2,hasTouchEvent:true"
+        >
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+          <div class="w-item"></div>
+        </div>
       </div>
     </div>
-
-    <div class="cursor"></div>
-
-    <script src="./js/index.js"></script>
+    <script src="../../dist/bundle.umd.js"></script>
+    <script>
+      const sliders = butterSlider.autoInit()
+    </script>
   </body>
 </html>

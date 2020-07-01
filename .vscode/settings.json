@@ -6,6 +6,9 @@
   "[javascript]": {
     "editor.formatOnSave": false
   },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
   "[html]": {
     "editor.formatOnSave": true
   },

@@ -1,26 +1,39 @@
-import { map, isElement, getFloatNumber, checkCallbackType } from './utils'
+import {
+  map,
+  isElement,
+  getFloatNumber,
+  checkCallbackType,
+  lerp,
+  getEvent,
+} from './utils'
+// eslint-disable-next-line no-unused-vars
+import { Options } from './interfaces/options'
 
-/** Class creating a butter slider. */
 class CreateSlider {
-  /**
-   * Create a new slider with params.
-   * @param {string|HTMLElement} container - Element where listeners will be add.
-   * @param {string|HTMLElement} slider - Element that will move.
-   * @param {boolean} [hasTouchEvent=false] - Add touch envents.
-   * @param {number|string} [dragSpeed=1] - Speed of the drag and hold.
-   * @param {number|string} [smoothAmount=0.15] - Smooth amount.
-   * @param {function} [mouseEnter] - Callback call when mouse enter the container.
-   * @param {function} [mouseLeave] - Callback call when mouse leave the container.
-   * @param {function} [mouseUp] - Callback call when user release click on the container.
-   * @param {function} [mouseDown] - Callback call when user press click on the container.
-   * @param {function(int)} [getScrollPercent] - Callback call at each frames and return the scroll amount in percent between 0 and 100.
-   */
-  constructor(options) {
+  options: any
+  containerTag: any
+  sliderTag: any
+  sliderTagLeft: number
+  sliderTagRight: number
+  dragSpeed: any
+  smoothAmount: any
+  down: boolean
+  startX: number
+  scrollLeft: number
+  isAnimating: boolean
+  x: number
+  dist: number
+  scrollAmount: number
+  stopAnimation: boolean
+  animationRef: any
+  scrollWidth: number
+
+  constructor(options: Options) {
     this.options = { ...options }
 
     if ((!this.options.container && !this.options.slider) || !this.options) {
-      console.error('No container and slider selector.')
-      return
+      // console.error('No container and slider selector.')
+      throw new Error('No container and slider selector.')
     } else {
       this.containerTag = isElement(this.options?.container)
         ? this.options?.container
@@ -31,17 +44,13 @@ class CreateSlider {
     }
 
     if (this.sliderTag === null) {
-      console.error(
-        'Target element does not exist on the page.',
-        this.sliderTag
+      throw new Error(
+        `Target element does not exist on the page. ${this.sliderTag}`
       )
-      return
     } else if (this.containerTag === null) {
-      console.error(
-        'Target element does not exist on the page.',
-        this.containerTag
+      throw new Error(
+        `Target element does not exist on the page. { this.containerTag}`
       )
-      return
     }
 
     if (
@@ -56,18 +65,23 @@ class CreateSlider {
       this.options.hasTouchEvent = false
     }
 
-    const leftMargin = window
+    const leftMargin: string = window
       .getComputedStyle(this.sliderTag)
       .getPropertyValue('margin-left')
-    const rightMargin = window
+    const rightMargin: string = window
       .getComputedStyle(this.sliderTag)
       .getPropertyValue('margin-right')
 
     this.sliderTagLeft = parseInt(leftMargin)
     this.sliderTagRight = parseInt(rightMargin)
 
-    this.dragSpeed = getFloatNumber(this.options?.dragSpeed, 1)
-    this.smoothAmount = getFloatNumber(this.options?.smoothAmount, 0.15)
+    this.dragSpeed = getFloatNumber(this.options?.dragSpeed, 1, 1, 100)
+    this.smoothAmount = getFloatNumber(
+      this.options?.smoothAmount,
+      0.15,
+      0.01,
+      1
+    )
 
     this.down = false
     this.startX = 0
@@ -77,11 +91,22 @@ class CreateSlider {
     this.dist = 0
     this.scrollAmount = 0
     this.stopAnimation = false
+    this.animationRef = null
+    this.scrollWidth = this.getScrollWidth()
 
     this.init()
   }
 
-  callCallback = (type, value) => {
+  getScrollWidth = (): number => {
+    return (
+      this.sliderTag.scrollWidth -
+      this.containerTag.offsetWidth +
+      this.sliderTagLeft +
+      this.sliderTagRight
+    )
+  }
+
+  callCallback = (type: string, value: number): void => {
     switch (type) {
       case 'mousedown':
         if (checkCallbackType(this.options?.mouseDown)) {
@@ -114,49 +139,53 @@ class CreateSlider {
     }
   }
 
-  getEvent = (event) => {
-    return event.targetTouches ? event.targetTouches[0] : event
-  }
-
-  mousedown = (e) => {
+  mousedown = (e: Event): void => {
     if (!this.isAnimating) {
       this.anime()
     }
 
-    const event = this.getEvent(e)
+    const event = getEvent(e)
 
     this.down = true
     this.startX = event.pageX - this.sliderTag.offsetLeft
     this.scrollLeft = this.scrollAmount
 
     this.sliderTag.classList.add('active')
-    this.callCallback('mousedown')
+    this.callCallback('mousedown', null)
   }
 
-  mouseleave = () => {
+  mouseleave = (): void => {
     this.down = false
     this.sliderTag.classList.remove('active')
-    this.callCallback('mouseleave')
+    this.callCallback('mouseleave', null)
   }
 
-  mouseup = () => {
+  mouseup = (): void => {
     this.down = false
     this.sliderTag.classList.remove('active')
-    this.callCallback('mouseup')
+    this.callCallback('mouseup', null)
   }
 
-  mousemove = (e) => {
-    this.callCallback('mousemove')
+  mousemove = (e: Event): void => {
+    this.callCallback('mousemove', null)
 
-    const event = this.getEvent(e)
+    const event = getEvent(e)
 
     if (!this.down) return
+    e.preventDefault()
 
     this.x = event.pageX - this.sliderTag.offsetLeft
     this.dist = this.scrollLeft - (this.x - this.startX) * this.dragSpeed
   }
 
-  getScrollPercent = () => {
+  transformElement = (): void => {
+    const amount = -this.scrollAmount.toFixed(3)
+    this.sliderTag.style.transform = `translate3D(${amount}px, 0, 0)`
+    this.sliderTag.style.webkitTransform = `translate3D(${amount}px, 0, 0)`
+    this.sliderTag.style.msTransform = `translate3D(${amount}px, 0, 0)`
+  }
+
+  getScrollPercent = (): void => {
     const scrollPercent = map(
       this.scrollAmount,
       0,
@@ -165,56 +194,43 @@ class CreateSlider {
       100
     )
 
-    this.callCallback('getscrollpercent', scrollPercent.toFixed(2))
+    this.callCallback('getscrollpercent', +scrollPercent.toFixed(3))
   }
 
-  anime = () => {
+  anime = (): void => {
     this.isAnimating = true
 
     // Can't go over the slider
     if (this.dist + this.scrollAmount <= 0) {
       this.dist = 0
-    }
-
-    if (
-      this.dist >=
-      this.sliderTag.scrollWidth -
-        this.containerTag.offsetWidth +
-        this.sliderTagLeft +
-        this.sliderTagRight
-    ) {
-      this.dist =
-        this.sliderTag.scrollWidth -
-        this.containerTag.offsetWidth +
-        this.sliderTagLeft +
-        this.sliderTagRight
+    } else if (this.dist >= this.scrollWidth) {
+      this.dist = this.scrollWidth
     }
 
     // LERP functions
-    this.scrollAmount += (this.dist - this.scrollAmount) * this.smoothAmount
-
-    this.sliderTag.style.transform = `translate3D(${-this.scrollAmount.toFixed(
-      2
-    )}px, 0, 0)`
-
+    this.scrollAmount = lerp(this.scrollAmount, this.dist, this.smoothAmount)
+    this.transformElement()
     this.getScrollPercent()
 
     if (this.stopAnimation) {
-      cancelAnimationFrame(this.anime)
+      cancelAnimationFrame(this.animationRef)
     } else {
-      requestAnimationFrame(this.anime)
+      this.animationRef = requestAnimationFrame(this.anime)
     }
   }
 
-  init = () => {
+  init = (): void => {
     this.isAnimating = false
     this.stopAnimation = false
+
+    // For better performance
+    this.sliderTag.style.willChange = 'transform'
 
     this.getScrollPercent()
 
     const isTouchScreen =
       'ontouchstart' in window ||
-      navigator.MaxTouchPoints > 0 ||
+      navigator.maxTouchPoints > 0 ||
       navigator.msMaxTouchPoints > 0
 
     if (!isTouchScreen) {
@@ -232,7 +248,7 @@ class CreateSlider {
     }
   }
 
-  destroy = () => {
+  destroy = (): void => {
     this.stopAnimation = true
     this.containerTag.removeEventListener('mousedown', this.mousedown)
     this.containerTag.removeEventListener('mouseleave', this.mouseleave)
@@ -242,7 +258,7 @@ class CreateSlider {
     this.containerTag.removeEventListener('touchstart', this.mousedown)
     this.containerTag.removeEventListener('touchleave', this.mouseleave)
     this.containerTag.removeEventListener('touchend', this.mouseup)
-    this.containerTag.removeEventListener('touchmove', this.mousemove)
+    this.containerTag.removeEventListener('touchmove', this.mousemove, false)
   }
 }
 

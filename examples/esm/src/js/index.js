@@ -1,4 +1,4 @@
-import { CreateSlider } from 'butter-slider'
+import { CreateSlider } from '../../../../dist/bundle.esm'
 import initCursor from './cursor'
 
 const cursor = document.querySelector('.cursor')

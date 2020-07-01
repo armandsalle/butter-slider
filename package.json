@@ -1,6 +1,6 @@
 {
   "name": "butter-slider",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Simple hold and drag slider",
   "main": "dist/bundle.umd.js",
   "module": "dist/bundle.esm.js",
@@ -14,32 +14,42 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-optional-chaining": "^7.10.1",
     "@babel/preset-env": "^7.9.6",
+    "@rollup/plugin-typescript": "^5.0.1",
+    "@types/jest": "^26.0.3",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.3.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.17.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.13.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^6.1.0"
+    "rollup-plugin-terser": "^6.1.0",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.5"
   },
   "scripts": {
-    "lint": "eslint 'src/*.js'",
-    "lint:fix": "eslint 'src/*.js' --fix",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "build": "rollup -c",
-    "prepublishOnly": "npm run build"
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -47,7 +57,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,jsx,ts,tsx}": [
       "npm run lint:fix"
     ]
   },
@@ -60,7 +70,8 @@
     "draggable",
     "butter",
     "drag",
-    "basic"
+    "basic",
+    "typesript"
   ],
   "author": "Armand Sallé",
   "license": "MIT",
