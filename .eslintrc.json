@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2020": true
+    "es2020": true,
+    "jest/globals": true
   },
   "extends": ["standard", "prettier"],
   "parser": "@typescript-eslint/parser",
@@ -9,7 +10,7 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": ["@typescript-eslint", "jest", "prettier"],
   "rules": {
     "strict": 0,
     "prettier/prettier": "error"
