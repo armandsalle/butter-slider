@@ -68,13 +68,11 @@ class AutoCreateSlider {
     const sliderName = element.dataset.butterContainer
 
     if (!sliderName) {
-      console.error('You need to add a unique id on `data-butter-container`')
-      return
+      throw new Error('You need to add a unique id on `data-butter-container`')
     }
 
     if (!isElement(element)) {
-      console.error(`No container was found for this slider : ${sliderName}`)
-      return
+      throw new Error(`No container was found for this slider : ${sliderName}`)
     }
 
     const slider = Array.from(this.initSliders).find((el) => {
@@ -82,10 +80,9 @@ class AutoCreateSlider {
     })
 
     if (!isElement(slider)) {
-      console.error(
+      throw new Error(
         `No slidable element was found for this slider : ${sliderName}`
       )
-      return
     }
 
     return {

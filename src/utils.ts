@@ -9,7 +9,7 @@ export const map = (
 }
 
 export const isElement = (element: any): boolean => {
-  return <any>element instanceof Element || element instanceof HTMLDocument
+  return !!(<any>element instanceof Element || element instanceof HTMLDocument)
 }
 
 export const capitalizeDataset = (str: string): string => {
@@ -21,18 +21,18 @@ export const capitalizeDataset = (str: string): string => {
 }
 
 export const getFloatNumber = (
-  value: string | number,
+  value: any,
   defaultValue: number,
   min: number,
   max: number
 ): number => {
-  if (!['string', 'number'].includes(typeof value)) {
-    return defaultValue
+  if (isNaN(+value)) {
+    return +defaultValue.toFixed(3)
   }
 
   const v = parseFloat((+value).toFixed(3))
 
-  return v > max ? max : v < min ? min : defaultValue
+  return v > max ? +max.toFixed(3) : v < min ? +min.toFixed(3) : v
 }
 
 export const checkCallbackType = (option: any): boolean => {

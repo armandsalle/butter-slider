@@ -32,8 +32,8 @@ class CreateSlider {
     this.options = { ...options }
 
     if ((!this.options.container && !this.options.slider) || !this.options) {
-      console.error('No container and slider selector.')
-      return
+      // console.error('No container and slider selector.')
+      throw new Error('No container and slider selector.')
     } else {
       this.containerTag = isElement(this.options?.container)
         ? this.options?.container
@@ -44,17 +44,13 @@ class CreateSlider {
     }
 
     if (this.sliderTag === null) {
-      console.error(
-        'Target element does not exist on the page.',
-        this.sliderTag
+      throw new Error(
+        `Target element does not exist on the page. ${this.sliderTag}`
       )
-      return
     } else if (this.containerTag === null) {
-      console.error(
-        'Target element does not exist on the page.',
-        this.containerTag
+      throw new Error(
+        `Target element does not exist on the page. { this.containerTag}`
       )
-      return
     }
 
     if (
