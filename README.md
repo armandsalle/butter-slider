@@ -1,6 +1,6 @@
 # Butter Slider
 
-[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Actions Status](https://github.com/armandsalle/Slider/workflows/Build/badge.svg)](https://github.com/armandsalle/Slider/actions) [![npm version](https://badge.fury.io/js/butter-slider.svg)](https://www.npmjs.com/package/butter-slider)
+[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Actions Status](https://github.com/armandsalle/Slider/workflows/Build/badge.svg)](https://github.com/armandsalle/Slider/actions) [![Actions Status](https://github.com/armandsalle/Slider/workflows/Tests/badge.svg)](https://github.com/armandsalle/Slider/actions) [![npm version](https://badge.fury.io/js/butter-slider.svg)](https://www.npmjs.com/package/butter-slider)
 
 A [smooth, simple, lightweight, vanilla JS, no dependencies] drag and hold slider, made for easy setup.
 
