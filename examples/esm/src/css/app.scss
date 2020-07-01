@@ -21,7 +21,6 @@ body {
     color: rgb(37, 36, 34);
     font-family: sans-serif;
     overflow-x: hidden;
-    cursor: none;
 }
 
 .cursor-on {
@@ -90,7 +89,6 @@ button {
     color: white;
     border: 2px solid transparent;
     transition: background-color .2s ease-in-out, border-color .1s ease-out;
-    cursor: none;
     user-select: none;
     margin-right: 10px;
 
@@ -171,26 +169,6 @@ button {
     bottom: 0;
     right: 0;
     background-color: rgb(37, 36, 34);
-}
-
-// @media (any-hover: hover) {
-//         .slider::-webkit-scrollbar {
-//             display: none;
-//         }
-//     }
-
-@media (any-hover: none) {
-    .cursor {
-        display: none;
-    }
-
-    // .progress {
-    //     display: none;
-    // }
-
-    // .slider {
-    //     overflow-x: scroll;
-    // }
 }
 
 .container-b {
