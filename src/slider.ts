@@ -172,6 +172,7 @@ class CreateSlider {
     const event = getEvent(e)
 
     if (!this.down) return
+    e.preventDefault()
 
     this.x = event.pageX - this.sliderTag.offsetLeft
     this.dist = this.scrollLeft - (this.x - this.startX) * this.dragSpeed
@@ -257,7 +258,7 @@ class CreateSlider {
     this.containerTag.removeEventListener('touchstart', this.mousedown)
     this.containerTag.removeEventListener('touchleave', this.mouseleave)
     this.containerTag.removeEventListener('touchend', this.mouseup)
-    this.containerTag.removeEventListener('touchmove', this.mousemove)
+    this.containerTag.removeEventListener('touchmove', this.mousemove, false)
   }
 }
 
