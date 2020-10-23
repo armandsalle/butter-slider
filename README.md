@@ -25,7 +25,7 @@ With a CDN
 <script src="https://unpkg.com/butter-slider"></script>
 
 <!-- ES6 with modules -->
-<script src="unpkg.com/butter-slider@latest/dist/bundle.esm.js"></script>
+<script src="https://unpkg.com/butter-slider@latest/dist/bundle.esm.js"></script>
 ```
 
 Imports and init
@@ -64,7 +64,7 @@ For auto init to works you need `data-butter-container` and `data-butter-slidabl
 </div>
 
 <!-- Scripts -->
-<script src="unpkg.com/butter-slider@latest/dist/bundle.umd.js"></script>
+<script src="https://unpkg.com/butter-slider@latest/dist/bundle.umd.js"></script>
 <script>
   butterSlider.autoInit()
 </script>
