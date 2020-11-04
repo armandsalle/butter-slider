@@ -46,7 +46,7 @@ const autoInitSlider = butterSlider.autoInit()
 
 ## Usage
 
-There is 2 ways to use it. With pure javascript or with data-attributes directly on yout HTML.
+There are 2 ways to use it. With pure javascript or with data-attributes directly on your HTML.
 
 ### With data-attributes and auto init
 
