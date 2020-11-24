@@ -8,7 +8,7 @@ Simple demo on [CodeSandbox](https://codesandbox.io/s/butter-slider-demo-rwxwi)
 
 ## News 📰
 
-I'm currently working on the V2, with custom hooks and better performance. 👀
+I'm currently working on the V1.2, with custom hooks and better performance. 👀
 Follow me on Twitter to get the last news about Butter Slider: [@ArmandSalle](https://twitter.com/ArmandSalle) 🧈🧈🧈🧈
 
 ## Install
