@@ -128,8 +128,24 @@ const mySlider = new butterSlider.CreateSlider({
 | mouseDown        | function                     | -       | -        | Call when click in the container. Usefull for cursor effect.                                                            | -              |
 | mouseUp          | function                     | -       | -        | Call when release the click in the container. Usefull for cursor effect.                                                | -              |
 | getScrollPercent | function => value in percent | -       | -        | Call on every frame with the amount of scroll in percent (between 0 and 100). Usefull for custom progress bar.          | -              |
+| setRelativePosition | function => value in pixel | -       | -        | If you want to use custom arrows to move the slider, this method is for you. But keep in mind, you need to code your own logic.          | -              |
 
 **Functions**
+
+If you want to use arrows, or move the slider by a specif distance, use setRelativePosition! 
+
+```js
+const myArrowTag = document.querySelector('.myArrow')
+const mySlider = new butterSlider.CreateSlider({
+  container: '.slider-container', // Where to listen events
+  slider: '.slider-items', // What to move
+})
+
+// Each time the arrow is click, the slider will move to 500px
+myArrowTag.addEventListener('click', () => {
+  mySlider.setRelativePosition(500)
+})
+```
 
 If you want to destroy your slider you can cann `destroy()`methods like this
 
