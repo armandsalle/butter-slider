@@ -108,7 +108,12 @@ class AutoCreateSlider {
 }
 
 const autoInit = (): CreateSlider[] => {
-  const slidersList = new AutoCreateSlider()
+  let slidersList
+
+  window.addEventListener('load', () => {
+    slidersList = new AutoCreateSlider()
+  })
+
   return slidersList.sliders
 }
 
