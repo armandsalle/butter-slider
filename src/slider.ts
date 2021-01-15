@@ -219,26 +219,26 @@ class CreateSlider {
     }
   }
 
-  // setRelativePosition = (x: number): void => {
-  //   // Set new relative slider, moving it `x` distance
-  //   this.x = this.sliderTag.offsetLeft - x
-  //   this.startX = this.sliderTag.offsetLeft
-  //   this.scrollLeft = this.scrollAmount
-  //   this.dist = this.scrollLeft - (this.x - this.startX) * this.dragSpeed
+  setRelativePosition = (x: number): void => {
+    // Set new relative slider, moving it `x` distance
+    this.x = this.sliderTag.offsetLeft - x
+    this.startX = this.sliderTag.offsetLeft
+    this.scrollLeft = this.scrollAmount
+    this.dist = this.scrollLeft - (this.x - this.startX) * this.dragSpeed
 
-  //   // Guards: Can't go over the slider
-  //   if (this.dist + this.scrollAmount <= 0) return
-  //   if (this.dist >= this.scrollWidth) return
+    // Guards: Can't go over the slider
+    if (this.dist + this.scrollAmount <= 0) return
+    if (this.dist >= this.scrollWidth) return
 
-  //   // Set slider active class
-  //   this.sliderTag.classList.add('active')
+    // Set slider active class
+    this.sliderTag.classList.add('active')
 
-  //   // Animate and transform
-  //   this.anime()
+    // Animate and transform
+    this.anime()
 
-  //   // Remove slider active class
-  //   this.sliderTag.classList.remove('active')
-  // }
+    // Remove slider active class
+    this.sliderTag.classList.remove('active')
+  }
 
   init = (): void => {
     this.isAnimating = false
