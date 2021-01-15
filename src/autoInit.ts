@@ -107,12 +107,14 @@ class AutoCreateSlider {
   }
 }
 
-const autoInit = (): CreateSlider[] => {
+const autoInit = async (): Promise<CreateSlider[]> => {
   let slidersList
 
-  window.addEventListener('load', () => {
-    slidersList = new AutoCreateSlider()
-  })
+  const createArrayOfSliders = async () => {
+    slidersList = await new AutoCreateSlider()
+  }
+
+  await window.addEventListener('load', createArrayOfSliders)
 
   return slidersList.sliders
 }
