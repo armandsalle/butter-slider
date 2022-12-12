@@ -6,11 +6,6 @@ A [smooth, simple, lightweight, vanilla JS, no dependencies] drag and hold slide
 
 Simple demo on [CodeSandbox](https://codesandbox.io/s/butter-slider-demo-rwxwi)
 
-## News 📰
-
-I'm currently working on the V1.2, with custom hooks and better performance. 👀
-Follow me on Twitter to get the last news about Butter Slider: [@ArmandSalle](https://twitter.com/ArmandSalle) 🧈🧈🧈🧈
-
 ## Install
 
 With NPM or Yarn
