@@ -1,3 +1,13 @@
+🚨 ❌❌❌ 🚨
+
+⚠️⚠️⚠️
+
+Butter Slider is no more maintained! Please use another slider tool or fork it and tweak it. The code is not good and performances are bad, but it was fun to do
+
+⚠️⚠️⚠️
+
+🚨 ❌❌❌ 🚨
+
 # Butter Slider
 
 [![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Actions Status](https://github.com/armandsalle/Slider/workflows/Build/badge.svg)](https://github.com/armandsalle/Slider/actions) [![npm version](https://badge.fury.io/js/butter-slider.svg)](https://www.npmjs.com/package/butter-slider)
